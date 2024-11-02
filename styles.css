@@ -1,263 +1,223 @@
-/* Reset y configuración general */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-/* Color de fondo general */
+/* Global Styles */
 body {
     font-family: 'Gilroy', sans-serif;
-    background-color: #0d0d0d; /* Mismo color para el body y header */
+    background: linear-gradient(135deg, #0d0d0d, #1e1e1e);
     color: #e0e0e0;
+    margin: 0;
     cursor: none;
+    overflow-x: hidden;
+    transition: background 0.3s ease;
 }
 
-/* Encabezado */
+/* Custom Cursor */
+#custom-cursor {
+    width: 12px;
+    height: 12px;
+    background-color: #00ffad;
+    position: fixed;
+    border-radius: 50%;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    transition: transform 0.1s ease, width 0.2s, height 0.2s;
+    z-index: 10000;
+}
+
+/* Header */
 header {
-    padding: 10px 20px;
-    background: #0d0d0d; /* Mismo color que el fondo del body */
+    padding: 20px;
+    background: rgba(13, 13, 13, 0.9);
     text-align: left;
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     z-index: 1000;
+    transition: background 0.3s ease;
 }
 
 header h1 {
     color: #00ffad;
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     font-weight: 700;
-    margin: 0;
     text-transform: uppercase;
     letter-spacing: 1px;
 }
 
-/* Secciones generales */
-
-/* Sección de contacto y especialidades (manteniendo el estilo) */
-.contact, .specialty-grid {
-    background-color: #222;
-    border-radius: 8px;
-    padding: 20px;
+#themeToggle {
+    background: none;
+    border: none;
+    color: #00ffad;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: transform 0.3s ease;
 }
 
-
-/* Cursor personalizado */
-#custom-cursor {
-    width: 12px;
-    height: 12px;
-    background-color: #00ffad;
-    border-radius: 50%;
-    position: fixed;
-    pointer-events: none;
-    transform: translate(-50%, -50%);
-    z-index: 1000;
-    transition: transform 0.05s ease;
+#themeToggle:hover {
+    transform: scale(1.2);
 }
 
-/* Secciones generales */
-section {
-    padding: 20px;
-    margin: 60px auto 20px; /* Ajusta el margen superior para no quedar oculto debajo del header */
+/* Hero Section */
+.hero {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    text-align: center;
+    background: linear-gradient(135deg, #0d0d0d, #333);
+    transition: all 0.3s ease;
+    padding: 0 20px;
+}
+
+.hero h2 {
+    font-size: 3rem;
+    margin: 0;
+    animation: fadeInDown 1s ease forwards;
+}
+
+.hero p {
+    font-size: 1.5rem;
     max-width: 800px;
+    margin-top: 10px;
+    animation: fadeInUp 1s ease forwards;
+}
+
+.scroll-button {
+    margin-top: 20px;
+    padding: 12px 24px;
+    color: #00ffad;
+    border: 2px solid #00ffad;
+    border-radius: 25px;
+    text-transform: uppercase;
+    font-weight: 700;
+    text-decoration: none;
+    transition: 0.3s;
+    animation: fadeInUp 1.5s ease forwards;
+}
+
+.scroll-button:hover {
+    background: #00ffad;
+    color: #0d0d0d;
+}
+
+/* Fade Animations */
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* About, My Approach, and My Prices Sections */
+.about, .focus, .pricing {
+    padding: 40px 20px;
+    max-width: 800px;
+    margin: 20px auto;
     background: #222;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    transition: transform 0.3s, box-shadow 0.3s;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+    animation: fadeIn 1s ease forwards;
+    transition: all 0.3s ease;
+}
+
+.about h2, .focus h2, .pricing h2 {
+    color: #00ffad;
+    font-size: 2.5rem;
+    text-transform: uppercase;
+    text-align: center; /* Centrar los títulos */
+}
+
+/* Centered Titles for Specialties, Projects, and Contact */
+.specialty-title, .projects-title, .contact-title {
+    color: #00ffad;
+    font-size: 2rem;
+    text-transform: uppercase;
+    text-align: center;
+    margin-top: 30px;
+}
+
+/* Specialty and Project Sections with Adjusted Layout */
+.specialty-grid, .project-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 15px;
+    justify-items: center;
+    padding: 20px 0;
+    max-width: 1000px;
+    margin: 0 auto; /* Centramos las secciones */
     text-align: center;
 }
 
-section h2 {
-    color: #00ffad;
-    font-size: 2rem;
-    margin: 0;
-    padding: 10px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-
-section p, section ul {
-    color: #e0e0e0;
-    font-size: 1rem;
-    line-height: 1.6;
-}
-
-/* Animación de contenido desplegable */
-.content {
-    opacity: 0;
-    transform: translateY(-20px);
-    transition: opacity 0.5s ease, transform 0.5s ease;
-    max-height: 0;
-    overflow: hidden;
-}
-
-section:hover .content {
-    opacity: 1;
-    transform: translateY(0);
-    max-height: 500px;
-    padding-top: 15px;
-    overflow: visible;
-}
-
-/* Sección de especialidades */
-.specialty-grid {
-    display: flex;
-    gap: 10px;
-    overflow-x: auto;
-    padding: 10px;
-    scrollbar-width: thin;
-    scrollbar-color: #00ffad #333;
-}
-
-.specialty-grid::-webkit-scrollbar {
-    height: 8px;
-}
-
-.specialty-grid::-webkit-scrollbar-track {
-    background: #333;
-    border-radius: 4px;
-}
-
-.specialty-grid::-webkit-scrollbar-thumb {
-    background-color: #00ffad;
-    border-radius: 4px;
-    border: 2px solid #333;
-}
-
-.specialty {
-    position: relative;
-    width: 80px;
-    height: 80px;
-    background-color: #333;
-    border-radius: 8px;
+.specialty, .project {
+    width: 120px;
+    height: 120px;
+    background: #222;
+    border-radius: 12px;
     overflow: hidden;
     cursor: pointer;
-    transition: width 0.3s ease;
-    flex-shrink: 0;
-}
-
-.specialty:hover {
-    width: 220px;
-}
-
-.image-container {
-    width: 100%;
-    height: 100%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    position: relative;
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
 }
 
-.image-container img {
+.specialty:hover, .project:hover {
+    width: 130px;
+    height: 130px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+}
+
+.specialty img, .project img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     transition: transform 0.3s ease;
+    border-radius: 8px;
 }
 
-.specialty:hover .image-container img {
-    transform: scale(1.1);
+.specialty:hover img, .project:hover img {
+    transform: scale(1.05);
 }
 
-.specialty .text {
-    position: absolute;
-    top: 10px;
-    left: 90px;
-    font-family: 'Arial', sans-serif;
-    font-size: 0.9rem;
+/* Text inside specialty and project items */
+.specialty .text, .project .text {
     color: #00ffad;
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
     opacity: 0;
     transition: opacity 0.3s ease;
-    white-space: nowrap;
 }
 
-.specialty:hover .text {
+.specialty:hover .text, .project:hover .text {
     opacity: 1;
 }
 
-/* Sección de Proyectos - Línea delgada con expansión en hover */
-.project-row {
-    display: flex;
-    overflow-x: auto;
-    gap: 5px;
-    padding: 20px 0;
-    scroll-behavior: smooth;
-}
-
-/* Personalización de la barra de desplazamiento */
-.project-row::-webkit-scrollbar {
-    height: 8px; /* Ajusta el tamaño de la barra */
-}
-
-.project-row::-webkit-scrollbar-track {
-    background: #333; /* Color de fondo del track de la barra */
-    border-radius: 4px;
-}
-
-.project-row::-webkit-scrollbar-thumb {
-    background-color: #00ffad; /* Color de la barra */
-    border-radius: 4px;
-    border: 2px solid #333; /* Borde alrededor de la barra para integrarse con el fondo */
-}
-
-.project {
-    width: 80px;
-    height: 80px;
-    overflow: hidden;
-    transition: width 0.4s ease, height 0.4s ease;
-    cursor: pointer;
-    flex-shrink: 0;
-}
-
-.project:hover {
-    width: 300px;
-    height: 200px;
-}
-
-.project img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.4s ease;
-}
-
-.project:hover img {
-    transform: scale(1.1);
-}
-
-
-/* Sección de Contacto */
+/* Contact Section */
 .contact {
-    max-width: 600px;
-    margin: 30px auto;
-    padding: 20px 40px;
-    background-color: #222;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
     text-align: center;
-}
-
-.contact h2 {
-    color: #00ffad;
-    font-size: 2rem;
-    margin-bottom: 15px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+    padding: 20px;
 }
 
 .contact ul {
-    list-style-type: none;
+    list-style: none;
     padding: 0;
-    margin: 0;
     font-size: 1.1rem;
+    color: #00ffad;
+    text-align: center; /* Centramos el contenido de Contact */
 }
 
-.contact li {
+.contact ul li {
     margin: 10px 0;
-    color: #e0e0e0;
 }
 
 .contact a {
@@ -272,13 +232,48 @@ section:hover .content {
 
 /* Footer */
 footer {
-    padding: 20px;
     text-align: center;
-    background-color: #0d0d0d;
-    border-top: 3px solid #00ffad;
+    padding: 20px;
+    color: #555;
+    font-size: 0.9rem;
 }
 
-footer p {
-    color: #e0e0e0;
-    font-size: 1.2rem;
+/* Scroll to Top Button */
+#scrollToTop {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    padding: 10px 15px;
+    background-color: #00ffad;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    z-index: 1000;
+    transition: transform 0.3s ease;
+}
+
+#scrollToTop:hover {
+    transform: scale(1.2);
+}
+
+/* Light and Dark Mode */
+.light-mode {
+    background: linear-gradient(135deg, #ffffff, #e0e0e0);
+    color: #0d0d0d;
+}
+
+.light-mode header, .light-mode footer {
+    background: rgba(255, 255, 255, 0.9);
+}
+
+.light-mode h2, .light-mode a {
+    color: #ff1493;
+}
+
+/* Fade In Animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
 }
