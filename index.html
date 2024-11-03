@@ -75,12 +75,9 @@
       <button id="showMoreBtn" class="show-more">Show More</button>
     </section>
 
-    <section id="contact-section" class="contact-section">
-      <h2>Contact Info</h2>
-      <div class="contact-info-buttons">
-          <a href="https://discord.com" target="_blank">Discord</a>
-          <a href="https://twitter.com" target="_blank">Twitter</a>
-          <a href="https://your-server-link.com" target="_blank">Server</a>
+    <div class="contact-info-buttons">
+          <a href="javascript:void(0);" onclick="copyDiscordID()">Discord</a>
+          <a href="https://x.com/thepilotdev" target="_blank">Twitter</a>
       </div>
     </section>
   </main>
@@ -90,5 +87,7 @@
   </footer>
 
   <script src="scripts.js"></script>
+  <div id="notification" class="notification hidden">Discord ID copied to clipboard!</div>
+
 </body>
 </html>
