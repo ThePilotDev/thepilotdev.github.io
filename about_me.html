@@ -6,165 +6,312 @@
   <title>About Me - ThePilotDev Portfolio</title>
   <link rel="stylesheet" href="about-styles.css">
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="tetris.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
-<body>
-  <header>
+<body class="bg-gray-900 text-white">
+  <header class="bg-black py-4 px-6 flex justify-between items-center border-b-4 border-green-600">
     <div class="header-left">
-      <h1>ThePilotDev</h1>
+      <h1 class="text-green-400 text-2xl font-bold">ThePilotDev</h1>
     </div>
     <div class="header-right">
-      <a href="index.html" class="header-button">Home</a>
+      <a href="index.html" class="bg-green-600 hover:bg-green-500 text-white px-4 py-2 rounded-lg transition-all duration-300 transform hover:scale-105">
+        <i class="fas fa-home mr-2"></i>Home
+      </a>
     </div>
   </header>
 
-  <main>
-    <section id="about" class="about">
-      <h2>About Me</h2>
-      <div class="content">
+  <main class="container mx-auto px-4 py-8">
+    <!-- Tetris Game Section -->
+    <section class="mb-12 bg-gray-800 p-6 rounded-lg shadow-lg">
+      <h2 class="text-2xl font-bold text-green-400 mb-4">Play Tetris (Minecraft Edition)</h2>
+      <div class="flex flex-col md:flex-row gap-8">
+        <div class="flex-1">
+          <canvas id="tetris-canvas" class="bg-black border-4 border-green-600 rounded-lg mx-auto block"></canvas>
+          <div class="mt-4 text-center">
+            <p class="text-yellow-400">Controls: Arrow Keys to Move, Up to Rotate, Space to Hard Drop</p>
+          </div>
+        </div>
+        <div class="flex-1 bg-gray-700 p-4 rounded-lg">
+          <h3 class="text-xl font-bold text-green-400 mb-2">Game Features:</h3>
+          <ul class="list-disc pl-5 space-y-2">
+            <li>Minecraft-themed blocks and colors</li>
+            <li>Authentic block textures</li>
+            <li>Responsive controls</li>
+          </ul>
+          <div class="mt-6">
+            <h3 class="text-xl font-bold text-green-400 mb-2">Did You Know?</h3>
+            <p>This game was built with pure JavaScript, just like the scripting I do for Minecraft Bedrock!</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Me Section -->
+    <section id="about" class="about mb-12 bg-gray-800 p-6 rounded-lg shadow-lg">
+      <h2 class="text-2xl font-bold text-green-400 mb-4">About Me</h2>
+      <div class="content space-y-4">
         <p>Hello! My name is Jose G. Duarte N, also known as Pilot. I’m a dedicated Minecraft developer from Venezuela with 3 years of experience specializing in addons, maps, and dynamic worlds for the Minecraft Bedrock Marketplace. My work involves a strong technical understanding of Minecraft Bedrock Edition, combined with extensive skills in JavaScript and TypeScript to maximize the use of the Minecraft Bedrock scripting API.</p>
-        <p>Over the years, I have developed a solid foundation in version control with Git, ensuring efficient collaboration and smooth project management. My projects, available on the Minecraft Marketplace, are crafted with a deep understanding of Minecraft commands, functions, and technical artistry. I am also familiar with project management tools like GitHub Issues and Jira, which help keep my workflow organized and efficient.</p>
-        <p>Beyond development, I have a background in technical art, focusing on asset implementation and optimization, and have also created custom tools to streamline the development process. I am always open to new challenges, whether freelance or as part of a team, and I bring both dedication and flexibility to my work. Thank you for visiting my portfolio, and I look forward to working together to create something amazing!</p>
+        <div class="bg-gray-700 p-4 rounded-lg hover:bg-gray-600 transition-all duration-300">
+          <p class="text-lg">Over the years, I have developed a solid foundation in version control with Git, ensuring efficient collaboration and smooth project management. My projects, available on the Minecraft Marketplace, are crafted with a deep understanding of Minecraft commands, functions, and technical artistry. I am also familiar with project management tools like GitHub Issues and Jira, which help keep my workflow organized and efficient.</p>
+        </div>
+        <div class="bg-gray-700 p-4 rounded-lg hover:bg-gray-600 transition-all duration-300">
+          <p class="text-lg">Beyond development, I have a background in technical art, focusing on asset implementation and optimization, and have also created custom tools to streamline the development process. I am always open to new challenges, whether freelance or as part of a team, and I bring both dedication and flexibility to my work. Thank you for visiting my portfolio, and I look forward to working together to create something amazing!</p>
+        </div>
       </div>
     </section>
 
-    <section class="focus">
-      <h2>My Approach</h2>
-      <div class="content">
-        <ul>
-          <li><strong>Creative Design:</strong> Crafting unique, visually appealing worlds and interactive experiences.</li>
-          <li><strong>Technical Precision:</strong> Developing optimized code and efficient structures for smooth gameplay.</li>
-          <li><strong>Player-First Mindset:</strong> Designing with player engagement and immersion at the forefront.</li>
-          <li><strong>Constant Evolution:</strong> Always learning new techniques to enhance each project.</li>
-        </ul>
+    <section class="focus mb-12 bg-gray-800 p-6 rounded-lg shadow-lg">
+      <h2 class="text-2xl font-bold text-green-400 mb-4">My Approach</h2>
+      <div class="content grid md:grid-cols-2 gap-4">
+        <div class="bg-gray-700 p-4 rounded-lg hover:bg-gray-600 transition-all duration-300">
+          <div class="flex items-center mb-2">
+            <i class="fas fa-paint-brush text-yellow-400 mr-2"></i>
+            <h3 class="text-lg font-bold text-yellow-400">Creative Design</h3>
+          </div>
+          <p>Crafting unique, visually appealing worlds and interactive experiences.</p>
+          <div class="w-full bg-gray-600 rounded-full h-2.5 mt-2">
+            <div class="bg-yellow-400 h-2.5 rounded-full" style="width: 95%"></div>
+          </div>
+        </div>
+        
+        <div class="bg-gray-700 p-4 rounded-lg hover:bg-gray-600 transition-all duration-300">
+          <div class="flex items-center mb-2">
+            <i class="fas fa-code text-blue-400 mr-2"></i>
+            <h3 class="text-lg font-bold text-blue-400">Technical Precision</h3>
+          </div>
+          <p>Developing optimized code and efficient structures for smooth gameplay.</p>
+          <div class="w-full bg-gray-600 rounded-full h-2.5 mt-2">
+            <div class="bg-blue-400 h-2.5 rounded-full" style="width: 90%"></div>
+          </div>
+        </div>
+        
+        <div class="bg-gray-700 p-4 rounded-lg hover:bg-gray-600 transition-all duration-300">
+          <div class="flex items-center mb-2">
+            <i class="fas fa-gamepad text-green-400 mr-2"></i>
+            <h3 class="text-lg font-bold text-green-400">Player-First Mindset</h3>
+          </div>
+          <p>Designing with player engagement and immersion at the forefront.</p>
+          <div class="w-full bg-gray-600 rounded-full h-2.5 mt-2">
+            <div class="bg-green-400 h-2.5 rounded-full" style="width: 92%"></div>
+          </div>
+        </div>
+        
+        <div class="bg-gray-700 p-4 rounded-lg hover:bg-gray-600 transition-all duration-300">
+          <div class="flex items-center mb-2">
+            <i class="fas fa-graduation-cap text-red-400 mr-2"></i>
+            <h3 class="text-lg font-bold text-red-400">Constant Evolution</h3>
+          </div>
+          <p>Always learning new techniques to enhance each project.</p>
+          <div class="w-full bg-gray-600 rounded-full h-2.5 mt-2">
+            <div class="bg-red-400 h-2.5 rounded-full" style="width: 88%"></div>
+          </div>
+        </div>
       </div>
     </section>
 
-    <section class="pricing">
-      <h2>My Prices</h2>
-      <div class="content">
-        <ul>
-          <li><strong>Small Projects:</strong> $100 - $250</li>
-          <li><strong>Medium Projects:</strong> $250 - $550 </li>
-          <li><strong>Advanced Projects:</strong> $550 - $900 </li>
-          <li><strong>Large Projects:</strong> $900 - $2000+ </li>
-          <li><strong>Per Hour:</strong> $18-$25</li>
-        </ul>
-      </div>
-    </section>
-    <section class="specialties">
-      <h2 class="specialty-title">My Skills</h2>
-      <div class="specialty-grid">
-        <div class="specialty">
-          <div class="image-container">
-            <img src="commands.png" alt="Commands">
-          </div>
-          <div class="text">Commands</div>
+    <section class="pricing mb-12 bg-gray-800 p-6 rounded-lg shadow-lg">
+      <h2 class="text-2xl font-bold text-green-400 mb-4">My Prices</h2>
+      <div class="content grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div class="bg-gray-700 p-4 rounded-lg hover:bg-gray-600 transition-all duration-300 border-l-4 border-green-400">
+          <h3 class="text-lg font-bold text-green-400 mb-2">Small Projects</h3>
+          <p class="text-xl">$100 - $250</p>
+          <p class="text-sm mt-2">Simple addons, small maps, or minor modifications</p>
         </div>
-        <div class="specialty">
-          <div class="image-container">
-            <img src="script.png" alt="JavaScript Scripting">
-          </div>
-          <div class="text">JavaScript Scripting</div>
+        
+        <div class="bg-gray-700 p-4 rounded-lg hover:bg-gray-600 transition-all duration-300 border-l-4 border-blue-400">
+          <h3 class="text-lg font-bold text-blue-400 mb-2">Medium Projects</h3>
+          <p class="text-xl">$250 - $550</p>
+          <p class="text-sm mt-2">Custom mobs, weapons, or medium-sized adventure maps</p>
         </div>
-        <div class="specialty">
-          <div class="image-container">
-            <img src="bp.jpg" alt="Behavior Packs">
-          </div>
-          <div class="text">Behavior Packs</div>
+        
+        <div class="bg-gray-700 p-4 rounded-lg hover:bg-gray-600 transition-all duration-300 border-l-4 border-yellow-400">
+          <h3 class="text-lg font-bold text-yellow-400 mb-2">Advanced Projects</h3>
+          <p class="text-xl">$550 - $900</p>
+          <p class="text-sm mt-2">Complex systems, custom UIs, or large behavior packs</p>
         </div>
-        <div class="specialty">
-          <div class="image-container">
-            <img src="rp.png" alt="Resource Packs">
-          </div>
-          <div class="text">Resource Packs</div>
+        
+        <div class="bg-gray-700 p-4 rounded-lg hover:bg-gray-600 transition-all duration-300 border-l-4 border-red-400">
+          <h3 class="text-lg font-bold text-red-400 mb-2">Large Projects</h3>
+          <p class="text-xl">$900 - $2000+</p>
+          <p class="text-sm mt-2">Complete marketplace worlds, extensive modpacks</p>
         </div>
-        <div class="specialty">
-          <div class="image-container">
-            <img src="3ditem.jpg" alt="3D Items">
-          </div>
-          <div class="text">3D Items</div>
-        </div>
-        <div class="specialty">
-          <div class="image-container">
-            <img src="laser.jpg" alt="Custom Weapons">
-          </div>
-          <div class="text">Custom Weapons</div>
-        </div>
-        <div class="specialty">
-          <div class="image-container">
-            <img src="custommobs.jpg" alt="Custom Mobs">
-          </div>
-          <div class="text">Custom Mobs</div>
-        </div>
-        <div class="specialty">
-          <div class="image-container">
-            <img src="adventuremaps.jpg" alt="Adventure Maps">
-          </div>
-          <div class="text">Adventure Maps</div>
+        
+        <div class="bg-gray-700 p-4 rounded-lg hover:bg-gray-600 transition-all duration-300 border-l-4 border-purple-400">
+          <h3 class="text-lg font-bold text-purple-400 mb-2">Per Hour</h3>
+          <p class="text-xl">$18 - $25</p>
+          <p class="text-sm mt-2">Custom work, consulting, or troubleshooting</p>
         </div>
       </div>
     </section>
-    <section class="studios-section">
-        <h2>Studios I've Worked With</h2>
-        <div class="studios-marquee">
-            <div class="studios-track">
-                <img src="stdios/5frame.jpg" alt="Studio 1">
-                <img src="stdios/block.png" alt="Studio 2">
-                <img src="stdios/chillcraft.jpg" alt="Studio 3">
-                <img src="stdios/cypress.jpg" alt="Studio 4">
-                <img src="stdios/digdown.jpg" alt="Studio 5">
-                <img src="stdios/herios.jpg" alt="Studio 6">
-                <img src="stdios/kreatik.png" alt="Studio 7">
-                <img src="stdios/lootbox.jpg" alt="Studio 8">
-                <img src="stdios/pixelusion.jpg" alt="Studio 9">
-                <img src="stdios/rareloot.jpg" alt="Studio 10">
-                <img src="stdios/ka_studios.jpg" alt="Studio 11">
+    
+    <section class="specialties mb-12 bg-gray-800 p-6 rounded-lg shadow-lg">
+      <h2 class="text-2xl font-bold text-green-400 mb-6 text-center">My Skills</h2>
+      <div class="specialty-grid grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div class="specialty bg-gray-700 p-4 rounded-lg hover:bg-gray-600 transition-all duration-300 transform hover:scale-105 text-center">
+          <div class="image-container mb-2">
+            <img src="commands.png" alt="Commands" class="w-16 h-16 mx-auto object-contain">
+          </div>
+          <div class="text font-bold text-green-400">Commands</div>
+          <div class="text-xs mt-1">Expert Level</div>
+        </div>
+        <div class="specialty bg-gray-700 p-4 rounded-lg hover:bg-gray-600 transition-all duration-300 transform hover:scale-105 text-center">
+          <div class="image-container mb-2">
+            <img src="script.png" alt="JavaScript Scripting" class="w-16 h-16 mx-auto object-contain">
+          </div>
+          <div class="text font-bold text-blue-400">JavaScript Scripting</div>
+          <div class="text-xs mt-1">Advanced Level</div>
+        </div>
+        <div class="specialty bg-gray-700 p-4 rounded-lg hover:bg-gray-600 transition-all duration-300 transform hover:scale-105 text-center">
+          <div class="image-container mb-2">
+            <img src="bp.jpg" alt="Behavior Packs" class="w-16 h-16 mx-auto object-contain">
+          </div>
+          <div class="text font-bold text-yellow-400">Behavior Packs</div>
+          <div class="text-xs mt-1">Expert Level</div>
+        </div>
+        <div class="specialty bg-gray-700 p-4 rounded-lg hover:bg-gray-600 transition-all duration-300 transform hover:scale-105 text-center">
+          <div class="image-container mb-2">
+            <img src="rp.png" alt="Resource Packs" class="w-16 h-16 mx-auto object-contain">
+          </div>
+          <div class="text font-bold text-red-400">Resource Packs</div>
+          <div class="text-xs mt-1">Advanced Level</div>
+        </div>
+        <div class="specialty bg-gray-700 p-4 rounded-lg hover:bg-gray-600 transition-all duration-300 transform hover:scale-105 text-center">
+          <div class="image-container mb-2">
+            <img src="3ditem.jpg" alt="3D Items" class="w-16 h-16 mx-auto object-contain">
+          </div>
+          <div class="text font-bold text-purple-400">3D Items</div>
+          <div class="text-xs mt-1">Intermediate Level</div>
+        </div>
+        <div class="specialty bg-gray-700 p-4 rounded-lg hover:bg-gray-600 transition-all duration-300 transform hover:scale-105 text-center">
+          <div class="image-container mb-2">
+            <img src="laser.jpg" alt="Custom Weapons" class="w-16 h-16 mx-auto object-contain">
+          </div>
+          <div class="text font-bold text-green-400">Custom Weapons</div>
+          <div class="text-xs mt-1">Advanced Level</div>
+        </div>
+        <div class="specialty bg-gray-700 p-4 rounded-lg hover:bg-gray-600 transition-all duration-300 transform hover:scale-105 text-center">
+          <div class="image-container mb-2">
+            <img src="custommobs.jpg" alt="Custom Mobs" class="w-16 h-16 mx-auto object-contain">
+          </div>
+          <div class="text font-bold text-blue-400">Custom Mobs</div>
+          <div class="text-xs mt-1">Expert Level</div>
+        </div>
+        <div class="specialty bg-gray-700 p-4 rounded-lg hover:bg-gray-600 transition-all duration-300 transform hover:scale-105 text-center">
+          <div class="image-container mb-2">
+            <img src="adventuremaps.jpg" alt="Adventure Maps" class="w-16 h-16 mx-auto object-contain">
+          </div>
+          <div class="text font-bold text-yellow-400">Adventure Maps</div>
+          <div class="text-xs mt-1">Advanced Level</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="studios-section mb-12 bg-gray-800 p-6 rounded-lg shadow-lg">
+        <h2 class="text-2xl font-bold text-green-400 mb-6 text-center">Studios I've Worked With</h2>
+        <div class="studios-marquee relative overflow-hidden h-32">
+            <div class="studios-track absolute top-0 left-0 flex items-center h-full animate-marquee whitespace-nowrap">
+                <img src="stdios/5frame.jpg" alt="Studio 1" class="h-20 w-auto mx-8 object-contain">
+                <img src="stdios/block.png" alt="Studio 2" class="h-20 w-auto mx-8 object-contain">
+                <img src="stdios/chillcraft.jpg" alt="Studio 3" class="h-20 w-auto mx-8 object-contain">
+                <img src="stdios/cypress.jpg" alt="Studio 4" class="h-20 w-auto mx-8 object-contain">
+                <img src="stdios/digdown.jpg" alt="Studio 5" class="h-20 w-auto mx-8 object-contain">
+                <img src="stdios/herios.jpg" alt="Studio 6" class="h-20 w-auto mx-8 object-contain">
+                <img src="stdios/kreatik.png" alt="Studio 7" class="h-20 w-auto mx-8 object-contain">
+                <img src="stdios/lootbox.jpg" alt="Studio 8" class="h-20 w-auto mx-8 object-contain">
+                <img src="stdios/pixelusion.jpg" alt="Studio 9" class="h-20 w-auto mx-8 object-contain">
+                <img src="stdios/rareloot.jpg" alt="Studio 10" class="h-20 w-auto mx-8 object-contain">
+                <img src="stdios/ka_studios.jpg" alt="Studio 11" class="h-20 w-auto mx-8 object-contain">
                 <!-- Duplicate images for smooth looping -->
-                <img src="stdios/5frame.jpg" alt="Studio 1">
-                <img src="stdios/block.png" alt="Studio 2">
-                <img src="stdios/chillcraft.jpg" alt="Studio 3">
-                <img src="stdios/cypress.jpg" alt="Studio 4">
-                <img src="stdios/digdown.jpg" alt="Studio 5">
-                <img src="stdios/herios.jpg" alt="Studio 6">
-                <img src="stdios/kreatik.png" alt="Studio 7">
-                <img src="stdios/lootbox.jpg" alt="Studio 8">
-                <img src="stdios/pixelusion.jpg" alt="Studio 9">
-                <img src="stdios/rareloot.jpg" alt="Studio 10">
-                <img src="stdios/ka_studios.jpg" alt="Studio 11">
+                <img src="stdios/5frame.jpg" alt="Studio 1" class="h-20 w-auto mx-8 object-contain">
+                <img src="stdios/block.png" alt="Studio 2" class="h-20 w-auto mx-8 object-contain">
+                <img src="stdios/chillcraft.jpg" alt="Studio 3" class="h-20 w-auto mx-8 object-contain">
+                <img src="stdios/cypress.jpg" alt="Studio 4" class="h-20 w-auto mx-8 object-contain">
+                <img src="stdios/digdown.jpg" alt="Studio 5" class="h-20 w-auto mx-8 object-contain">
+                <img src="stdios/herios.jpg" alt="Studio 6" class="h-20 w-auto mx-8 object-contain">
+                <img src="stdios/kreatik.png" alt="Studio 7" class="h-20 w-auto mx-8 object-contain">
+                <img src="stdios/lootbox.jpg" alt="Studio 8" class="h-20 w-auto mx-8 object-contain">
+                <img src="stdios/pixelusion.jpg" alt="Studio 9" class="h-20 w-auto mx-8 object-contain">
+                <img src="stdios/rareloot.jpg" alt="Studio 10" class="h-20 w-auto mx-8 object-contain">
+                <img src="stdios/ka_studios.jpg" alt="Studio 11" class="h-20 w-auto mx-8 object-contain">
             </div>
         </div>
     </section>
-    <section id="happy-clients" class="happy-clients">
-        <h2>Happy Clients!</h2>
-        <div class="testimonials">
-            <div class="testimonial">
-                <p>"I like your prices and appreciate that you don't hesitate to stretch them sometimes. When we explain what we want, you complete it quickly and you definitely make us very satisfied in terms of communication. I've worked with dozens of people so far and you are definitely one of the best."</p>
-                <span>Cypress Games</span>
+    
+    <section id="happy-clients" class="happy-clients mb-12 bg-gray-800 p-6 rounded-lg shadow-lg">
+        <h2 class="text-2xl font-bold text-green-400 mb-6 text-center">Happy Clients!</h2>
+        <div class="testimonials grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="testimonial bg-gray-700 p-6 rounded-lg hover:bg-gray-600 transition-all duration-300">
+                <div class="quote-icon text-green-400 mb-2">
+                    <i class="fas fa-quote-left text-2xl"></i>
+                </div>
+                <p class="italic mb-4">"I like your prices and appreciate that you don't hesitate to stretch them sometimes. When we explain what we want, you complete it quickly and you definitely make us very satisfied in terms of communication. I've worked with dozens of people so far and you are definitely one of the best."</p>
+                <div class="flex items-center">
+                    <div class="w-10 h-10 rounded-full bg-green-400 mr-3"></div>
+                    <span class="font-bold text-green-400">Cypress Games</span>
+                </div>
             </div>
-            <div class="testimonial">
-                <p>"Hey, everything's pretty good."</p>
-                <span>Lorem Studios</span>
+            <div class="testimonial bg-gray-700 p-6 rounded-lg hover:bg-gray-600 transition-all duration-300">
+                <div class="quote-icon text-blue-400 mb-2">
+                    <i class="fas fa-quote-left text-2xl"></i>
+                </div>
+                <p class="italic mb-4">"Hey, everything's pretty good."</p>
+                <div class="flex items-center">
+                    <div class="w-10 h-10 rounded-full bg-blue-400 mr-3"></div>
+                    <span class="font-bold text-blue-400">Lorem Studios</span>
+                </div>
             </div>
-            <div class="testimonial">
-                <p>"First of all, it’s a pleasant and easy work with you. The prices are normal compared to coders in the market who work with exaggerated prices. In terms of communication, although my English is not high level, we get along very well, and we are pleased to work with you."</p>
-                <span>Lootbox Studios</span>
+            <div class="testimonial bg-gray-700 p-6 rounded-lg hover:bg-gray-600 transition-all duration-300">
+                <div class="quote-icon text-yellow-400 mb-2">
+                    <i class="fas fa-quote-left text-2xl"></i>
+                </div>
+                <p class="italic mb-4">"First of all, it's a pleasant and easy work with you. The prices are normal compared to coders in the market who work with exaggerated prices. In terms of communication, although my English is not high level, we get along very well, and we are pleased to work with you."</p>
+                <div class="flex items-center">
+                    <div class="w-10 h-10 rounded-full bg-yellow-400 mr-3"></div>
+                    <span class="font-bold text-yellow-400">Lootbox Studios</span>
+                </div>
             </div>
-            <div class="testimonial">
-                <p>"Generally good work, communicates very well, sends videos, reacts to comments, and fixes problems pretty fast! Price is good, and delivery time is great as soon as you started the project."</p>
-                <span>Rad Games</span>
+            <div class="testimonial bg-gray-700 p-6 rounded-lg hover:bg-gray-600 transition-all duration-300">
+                <div class="quote-icon text-red-400 mb-2">
+                    <i class="fas fa-quote-left text-2xl"></i>
+                </div>
+                <p class="italic mb-4">"Generally good work, communicates very well, sends videos, reacts to comments, and fixes problems pretty fast! Price is good, and delivery time is great as soon as you started the project."</p>
+                <div class="flex items-center">
+                    <div class="w-10 h-10 rounded-full bg-red-400 mr-3"></div>
+                    <span class="font-bold text-red-400">Rad Games</span>
+                </div>
             </div>
-            <div class="testimonial">
-              <p>"It was an absolute pleasure working with you. You were incredibly supportive, easy to collaborate with, and consistently delivered high-quality work. Everything was completed on time, and your prices were excellent. Highly recommend!"</p>
-              <span>KA Studios</span>
-          </div>
+            <div class="testimonial bg-gray-700 p-6 rounded-lg hover:bg-gray-600 transition-all duration-300">
+                <div class="quote-icon text-purple-400 mb-2">
+                    <i class="fas fa-quote-left text-2xl"></i>
+                </div>
+                <p class="italic mb-4">"It was an absolute pleasure working with you. You were incredibly supportive, easy to collaborate with, and consistently delivered high-quality work. Everything was completed on time, and your prices were excellent. Highly recommend!"</p>
+                <div class="flex items-center">
+                    <div class="w-10 h-10 rounded-full bg-purple-400 mr-3"></div>
+                    <span class="font-bold text-purple-400">KA Studios</span>
+                </div>
+            </div>
         </div>
     </section>
-    
-    
   </main>
 
-  <footer>
-    <p>&copy; 2024 ThePilotDev</p>
+  <footer class="bg-black py-6 px-4 border-t-4 border-green-600">
+    <div class="container mx-auto text-center">
+      <p class="text-gray-400 mb-2">&copy; 2024 ThePilotDev</p>
+      <p class="text-green-400 font-bold text-lg">"If I'm not a good developer, who do you think made this page?"</p>
+      <div class="flex justify-center space-x-4 mt-4">
+        <a href="#" class="text-gray-400 hover:text-green-400 transition-colors duration-300">
+          <i class="fab fa-twitter text-xl"></i>
+        </a>
+        <a href="#" class="text-gray-400 hover:text-green-400 transition-colors duration-300">
+          <i class="fab fa-discord text-xl"></i>
+        </a>
+        <a href="#" class="text-gray-400 hover:text-green-400 transition-colors duration-300">
+          <i class="fab fa-github text-xl"></i>
+        </a>
+      </div>
+    </div>
   </footer>
 </body>
 </html>

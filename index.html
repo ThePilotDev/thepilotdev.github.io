@@ -4,107 +4,149 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ThePilotDev Portfolio</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="snake.js"></script>
+  <link rel="stylesheet" href="styles.css">
 </head>
-<body>
-  <header>
+<body class="bg-gray-900 text-white">
+  <header class="bg-black py-4 px-6 flex justify-between items-center border-b-4 border-green-600">
     <div class="header-left">
-      <h1>ThePilotDev</h1>
+      <h1 class="text-green-400 text-2xl font-bold">ThePilotDev</h1>
     </div>
-    <div class="header-right">
-      <a href="about_me.html" class="header-button">About Me</a>
-      <a href="#contact-info-buttons" class="header-button">Contact Me</a>
+    <div class="header-right space-x-4">
+      <a href="about_me.html" class="bg-green-600 hover:bg-green-500 text-white px-4 py-2 rounded-lg transition-all duration-300 transform hover:scale-105">
+        <i class="fas fa-user mr-2"></i>About Me
+      </a>
+      <a href="#contact-info-buttons" class="bg-blue-600 hover:bg-blue-500 text-white px-4 py-2 rounded-lg transition-all duration-300 transform hover:scale-105">
+        <i class="fas fa-envelope mr-2"></i>Contact Me
+      </a>
     </div>
   </header>
 
-  <main>
-    <section id="projects" class="portfolio-grid">
-      <div class="project-container">
-        <div class="project">
+  <main class="container mx-auto px-4 py-8">
+    <!-- Snake Game Section -->
+    <section class="mb-12 bg-gray-800 p-6 rounded-lg shadow-lg">
+      <h2 class="text-2xl font-bold text-green-400 mb-4">Play Snake (Minecraft Edition)</h2>
+      <div class="flex flex-col md:flex-row gap-8">
+        <div class="flex-1">
+          <canvas id="snake-canvas" class="bg-black border-4 border-green-600 rounded-lg mx-auto block"></canvas>
+          <div class="mt-4 text-center">
+            <p class="text-yellow-400">Controls: Arrow Keys to Move</p>
+          </div>
+        </div>
+        <div class="flex-1 bg-gray-700 p-4 rounded-lg">
+          <h3 class="text-xl font-bold text-green-400 mb-2">Game Features:</h3>
+          <ul class="list-disc pl-5 space-y-2">
+            <li>Minecraft-themed snake and food</li>
+            <li>Authentic pixel art</li>
+            <li>Score tracking</li>
+            <li>Increasing difficulty</li>
+            <li>Responsive controls</li>
+          </ul>
+          <div class="mt-6">
+            <h3 class="text-xl font-bold text-green-400 mb-2">Did You Know?</h3>
+            <p>This game was built with pure JavaScript, showcasing my coding skills!</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="portfolio-grid mb-12 bg-gray-800 p-6 rounded-lg shadow-lg">
+      <h2 class="text-2xl font-bold text-green-400 mb-6 text-center">My Projects</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="project bg-gray-700 p-4 rounded-lg hover:bg-gray-600 transition-all duration-300 transform hover:scale-105">
           <a href="https://www.minecraft.net/en-us/marketplace/pdp?id=eb46793e-d7db-4615-8dd4-cdce1ef27951">
-            <img src="project_1.jpg" alt="Ore Detector ++">
-              <div class="project-name">Ore Detector ++</div>
+            <img src="project_1.jpg" alt="Ore Detector ++" class="w-full h-48 object-cover rounded-lg mb-2">
+            <div class="project-name text-green-400 font-bold text-lg">Ore Detector ++</div>
           </a>
         </div>
-        <div class="project">
+        <div class="project bg-gray-700 p-4 rounded-lg hover:bg-gray-600 transition-all duration-300 transform hover:scale-105">
           <a href="https://www.minecraft.net/en-us/marketplace/pdp?id=bbc39b87-5547-4174-8dee-d226c51c28c3">
-            <img src="security.jpg" alt="Security Bunker">
-            <div class="project-name">Security Bunker</div>
+            <img src="security.jpg" alt="Security Bunker" class="w-full h-48 object-cover rounded-lg mb-2">
+            <div class="project-name text-green-400 font-bold text-lg">Security Bunker</div>
           </a>
         </div>
-        <div class="project">
+        <div class="project bg-gray-700 p-4 rounded-lg hover:bg-gray-600 transition-all duration-300 transform hover:scale-105">
           <a href="https://www.behance.net/gallery/136173379/Loren-Studios-Minecraft-Marketplace-Projects">
-            <img src="pets.png" alt="Cute Pets (Coming Soon)">
-            <div class="project-name">Cute Pets (Coming Soon)</div>
+            <img src="pets.png" alt="Cute Pets (Coming Soon)" class="w-full h-48 object-cover rounded-lg mb-2">
+            <div class="project-name text-green-400 font-bold text-lg">Cute Pets (Coming Soon)</div>
           </a>
         </div>
-        <div class="project">
+        <div class="project bg-gray-700 p-4 rounded-lg hover:bg-gray-600 transition-all duration-300 transform hover:scale-105">
           <a href="https://www.minecraft.net/en-us/marketplace/pdp?id=8ae8a2f0-9a05-45fa-a82a-bdc077f35eb6">
-            <img src="breeze_weapons.jpg" alt="Breeze Weapons">
-            <div class="project-name">Breeze Weapons</div>
+            <img src="breeze_weapons.jpg" alt="Breeze Weapons" class="w-full h-48 object-cover rounded-lg mb-2">
+            <div class="project-name text-green-400 font-bold text-lg">Breeze Weapons</div>
           </a>
         </div>
-        <div class="project hidden">
+        <div class="project hidden bg-gray-700 p-4 rounded-lg hover:bg-gray-600 transition-all duration-300 transform hover:scale-105">
           <a href="https://www.minecraft.net/en-us/marketplace/pdp?id=b4001253-8771-49fa-bc8f-c559ae865e18">
-            <img src="wolf.jpg" alt="Wolf Expansion">
-            <div class="project-name">Wolf Expansion</div>
+            <img src="wolf.jpg" alt="Wolf Expansion" class="w-full h-48 object-cover rounded-lg mb-2">
+            <div class="project-name text-green-400 font-bold text-lg">Wolf Expansion</div>
           </a>
         </div>
-        <div class="project hidden">
+        <div class="project hidden bg-gray-700 p-4 rounded-lg hover:bg-gray-600 transition-all duration-300 transform hover:scale-105">
           <a href="https://www.minecraft.net/es-es/marketplace/pdp?id=c2c6b98e-c724-48c5-b33d-3c8543e10ff7">
-            <img src="evolve.jpg" alt="Wither Evolve">
-            <div class="project-name">Wither Evolve</div>
+            <img src="evolve.jpg" alt="Wither Evolve" class="w-full h-48 object-cover rounded-lg mb-2">
+            <div class="project-name text-green-400 font-bold text-lg">Wither Evolve</div>
           </a>
         </div>
-        <div class="project hidden">
+        <div class="project hidden bg-gray-700 p-4 rounded-lg hover:bg-gray-600 transition-all duration-300 transform hover:scale-105">
           <a href="https://www.minecraft.net/en-us/marketplace/pdp?id=445077ce-d130-4eed-93f7-351dcce8a084">
-            <img src="tnt.jpg" alt="TnT Town">
-            <div class="project-name">TnT Town</div>
+            <img src="tnt.jpg" alt="TnT Town" class="w-full h-48 object-cover rounded-lg mb-2">
+            <div class="project-name text-green-400 font-bold text-lg">TnT Town</div>
           </a>
         </div>
-        <div class="project hidden">
+        <div class="project hidden bg-gray-700 p-4 rounded-lg hover:bg-gray-600 transition-all duration-300 transform hover:scale-105">
           <a href="https://www.minecraft.net/en-us/marketplace/pdp?id=c305a7ff-6f6e-4eb8-8fb1-8028395cb512">
-            <img src="camels.jpg" alt="More Camels">
-            <div class="project-name">More Camels</div>
+            <img src="camels.jpg" alt="More Camels" class="w-full h-48 object-cover rounded-lg mb-2">
+            <div class="project-name text-green-400 font-bold text-lg">More Camels</div>
           </a>
         </div>
-        <div class="project hidden">
+        <div class="project hidden bg-gray-700 p-4 rounded-lg hover:bg-gray-600 transition-all duration-300 transform hover:scale-105">
           <a href="https://www.minecraft.net/en-us/marketplace/pdp?id=50e61c35-265a-4c69-ad45-ae40df842186">
-            <img src="cursed.jpg" alt="Cursed World">
-            <div class="project-name">Cursed World</div>
+            <img src="cursed.jpg" alt="Cursed World" class="w-full h-48 object-cover rounded-lg mb-2">
+            <div class="project-name text-green-400 font-bold text-lg">Cursed World</div>
           </a>
         </div>
-        <div class="project hidden">
+        <div class="project hidden bg-gray-700 p-4 rounded-lg hover:bg-gray-600 transition-all duration-300 transform hover:scale-105">
           <a href="https://www.minecraft.net/en-us/marketplace/pdp?id=04543470-c7b6-42b8-90a1-e2c868fd063d">
-            <img src="parkour.jpg" alt="Parkour & Portals">
-            <div class="project-name">Parkour & Portals</div>
+            <img src="parkour.jpg" alt="Parkour & Portals" class="w-full h-48 object-cover rounded-lg mb-2">
+            <div class="project-name text-green-400 font-bold text-lg">Parkour & Portals</div>
           </a>
         </div>
-        <div class="project hidden">
-          <h3>I hope we fill this with more projects!</h2>
+        <div class="project hidden bg-gray-700 p-4 rounded-lg hover:bg-gray-600 transition-all duration-300 transform hover:scale-105">
+          <h3 class="text-green-400">I hope we fill this with more projects!</h3>
         </div>
       </div>
       
-      
-      <button id="showMoreBtn" class="show-more">Show More</button>
+      <button id="showMoreBtn" class="mt-6 bg-yellow-600 hover:bg-yellow-500 text-white px-6 py-3 rounded-lg transition-all duration-300 transform hover:scale-105 mx-auto block">
+        Show More Projects
+      </button>
     </section>
 
-    <section id="contact-info-buttons" class="contact-info-buttons">
-      <h2>Contact Info</h2>
-      <div class="contact-info-buttons">
-        <a href="javascript:void(0);" onclick="copyDiscordID()">Discord</a>
-        <a href="https://x.com/thepilotdev" target="_blank">Twitter</a>
+    <section id="contact-info-buttons" class="contact-info-buttons mb-12 bg-gray-800 p-6 rounded-lg shadow-lg">
+      <h2 class="text-2xl font-bold text-green-400 mb-6 text-center">Contact Me</h2>
+      <div class="flex justify-center space-x-4">
+        <a href="javascript:void(0);" onclick="copyDiscordID()" class="bg-purple-600 hover:bg-purple-500 text-white px-6 py-3 rounded-lg transition-all duration-300 transform hover:scale-105">
+          <i class="fab fa-discord mr-2"></i>Discord
+        </a>
+        <a href="https://x.com/thepilotdev" target="_blank" class="bg-blue-400 hover:bg-blue-300 text-white px-6 py-3 rounded-lg transition-all duration-300 transform hover:scale-105">
+          <i class="fab fa-twitter mr-2"></i>Twitter
+        </a>
       </div>
     </section>
   </main>
 
-  <footer>
-    <p>&copy; 2024 ThePilotDev</p>
+  <footer class="bg-black py-6 px-4 border-t-4 border-green-600">
+    <div class="container mx-auto text-center">
+      <p class="text-gray-400 mb-2">&copy; 2024 ThePilotDev</p>
+      <p class="text-green-400 font-bold text-lg">"Building amazing Minecraft experiences!"</p>
+    </div>
   </footer>
 
   <script src="scripts.js"></script>
-  <div id="notification" class="notification hidden">Discord ID copied to clipboard!</div>
-
+  <div id="notification" class="notification hidden fixed bottom-4 right-4 bg-green-600 text-white px-4 py-2 rounded-lg">Discord ID copied to clipboard!</div>
 </body>
 </html>
