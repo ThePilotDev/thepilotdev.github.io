@@ -1,176 +1,758 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ThePilotDev Portfolio</title>
+  <title>ThePilotDev - Minecraft Developer Portfolio</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
-  <script src="snake.js"></script>
-  <link rel="stylesheet" href="styles.css">
+  <style>
+    :root {
+      --primary-blue: #4A90E2;
+      --light-blue: #87CEEB;
+      --dark-blue: #2C5AA0;
+      --accent-blue: #6EC6FF;
+      --white: #FFFFFF;
+      --light-gray: #F5F5F5;
+      --medium-gray: #E0E0E0;
+      --dark: #121212;
+      --darker: #0A0A0A;
+      --text-dark: #333333;
+      --text-medium: #666666;
+    }
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, var(--light-gray) 0%, var(--white) 100%);
+      color: var(--text-dark);
+      background-image: 
+        radial-gradient(circle at 15% 50%, rgba(74, 144, 226, 0.1) 0%, transparent 20%),
+        radial-gradient(circle at 85% 30%, rgba(135, 206, 235, 0.1) 0%, transparent 20%),
+        radial-gradient(circle at 50% 80%, rgba(110, 198, 255, 0.05) 0%, transparent 20%);
+    }
+    
+    .minecraft-font {
+      font-family: 'Press Start 2P', cursive;
+    }
+    
+    .header-gradient {
+      background: linear-gradient(135deg, var(--primary-blue) 0%, var(--dark-blue) 100%);
+      border-bottom: 3px solid var(--light-blue);
+      box-shadow: 0 4px 12px rgba(44, 90, 160, 0.3);
+    }
+    
+    .section-container {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border: 2px solid var(--primary-blue);
+      border-radius: 12px;
+      box-shadow: 0 8px 32px rgba(44, 90, 160, 0.15);
+    }
+    
+    .btn-mc {
+      background: linear-gradient(to bottom, #4A90E2, #2C5AA0);
+      border: 3px solid;
+      border-top-color: #87CEEB;
+      border-left-color: #87CEEB;
+      border-right-color: #2C5AA0;
+      border-bottom-color: #2C5AA0;
+      border-radius: 0;
+      color: white;
+      font-weight: 600;
+      font-family: 'Press Start 2P', cursive;
+      font-size: 0.8rem;
+      padding: 12px 20px;
+      transition: all 0.1s ease;
+      text-transform: uppercase;
+      position: relative;
+      box-shadow: 0 4px 0 #1a3a6b;
+      image-rendering: pixelated;
+    }
+    
+    .btn-mc:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 0 #1a3a6b;
+      background: linear-gradient(to bottom, #5A9FEF, #3C6AB0);
+    }
+    
+    .btn-mc:active {
+      transform: translateY(4px);
+      box-shadow: 0 0px 0 #1a3a6b;
+      background: linear-gradient(to bottom, #3A80D2, #1C4A90);
+    }
+    
+    .btn-mc::before {
+      content: '';
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      right: 2px;
+      bottom: 2px;
+      border: 1px solid rgba(255,255,255,0.3);
+      pointer-events: none;
+    }
+    
+    .project-card {
+      background: linear-gradient(145deg, var(--white), var(--light-gray));
+      border: 2px solid var(--primary-blue);
+      border-radius: 6px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+    
+    .project-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary-blue), var(--accent-blue));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s ease;
+    }
+    
+    .project-card:hover::before {
+      transform: scaleX(1);
+    }
+    
+    .project-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 20px rgba(44, 90, 160, 0.2);
+      border-color: var(--accent-blue);
+    }
+    
+    .game-canvas-container {
+      background: var(--white);
+      border: 3px solid var(--primary-blue);
+      border-radius: 10px;
+      padding: 8px;
+      box-shadow: 0 0 20px rgba(74, 144, 226, 0.2);
+    }
+    
+    .footer-gradient {
+      background: linear-gradient(135deg, var(--dark-blue) 0%, var(--primary-blue) 100%);
+      border-top: 3px solid var(--light-blue);
+    }
+    
+    .notification {
+      background: linear-gradient(135deg, var(--primary-blue), var(--dark-blue));
+      border: 2px solid var(--light-blue);
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(44, 90, 160, 0.3);
+    }
+    
+    .text-glow {
+      text-shadow: 0 0 10px rgba(74, 144, 226, 0.5);
+    }
+    
+    .floating {
+      animation: floating 3s ease-in-out infinite;
+    }
+    
+    @keyframes floating {
+      0% { transform: translate(0, 0px); }
+      50% { transform: translate(0, -10px); }
+      100% { transform: translate(0, 0px); }
+    }
+    
+    .text-primary {
+      color: var(--primary-blue);
+      font-weight: 700;
+    }
+    
+    .text-accent {
+      color: var(--accent-blue);
+      font-weight: 600;
+    }
+    
+    .text-dark {
+      color: var(--text-dark);
+      font-weight: 500;
+    }
+    
+    .text-medium {
+      color: var(--text-medium);
+      font-weight: 400;
+      line-height: 1.6;
+    }
+    
+    .feature-text {
+      color: #2D3748;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      font-weight: 500;
+    }
+    
+    .insight-box {
+      background: linear-gradient(135deg, #E3F2FD, #F3F9FF);
+      border: 2px solid var(--primary-blue);
+      border-radius: 8px;
+      padding: 1.5rem;
+    }
+    
+    .insight-text {
+      color: #2D3748;
+      font-size: 1rem;
+      line-height: 1.7;
+      font-weight: 400;
+    }
+    
+    .subtitle {
+      color: #4A5568;
+      font-size: 1.1rem;
+      line-height: 1.5;
+      font-weight: 500;
+    }
+    
+    .bg-feature {
+      background: linear-gradient(135deg, #F8FBFF, #FFFFFF);
+      border-left: 4px solid var(--primary-blue);
+    }
+
+    /* Estilos para los botones de control móvil */
+    .control-btn {
+      background: linear-gradient(to bottom, #4A90E2, #2C5AA0);
+      border: 3px solid;
+      border-top-color: #87CEEB;
+      border-left-color: #87CEEB;
+      border-right-color: #2C5AA0;
+      border-bottom-color: #2C5AA0;
+      border-radius: 8px;
+      color: white;
+      font-weight: bold;
+      font-size: 1.5rem;
+      width: 60px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 0 #1a3a6b;
+      transition: all 0.1s ease;
+    }
+
+    .control-btn:active {
+      transform: translateY(4px);
+      box-shadow: 0 0px 0 #1a3a6b;
+    }
+
+    .controls-grid {
+      display: grid;
+      grid-template-areas:
+        ". up ."
+        "left . right"
+        ". down .";
+      gap: 10px;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    .control-up { grid-area: up; }
+    .control-left { grid-area: left; }
+    .control-right { grid-area: right; }
+    .control-down { grid-area: down; }
+  </style>
 </head>
-<body class="bg-gray-900 text-white">
-  <header class="bg-black py-4 px-6 flex justify-between items-center border-b-4 border-green-600">
+<body class="bg-gray-50 text-gray-800">
+  <header class="header-gradient py-4 px-6 flex justify-between items-center sticky top-0 z-50">
     <div class="header-left">
-      <h1 class="text-green-400 text-2xl font-bold">ThePilotDev</h1>
+      <h1 class="text-white text-2xl font-bold minecraft-font text-glow">ThePilotDev</h1>
+      <p class="text-blue-200 text-sm mt-1">Minecraft Bedrock Specialist</p>
     </div>
     <div class="header-right space-x-4">
-      <a href="about_me.html" class="bg-green-600 hover:bg-green-500 text-white px-4 py-2 rounded-lg transition-all duration-300 transform hover:scale-105">
+      <a href="about_me.html" class="btn-mc text-white px-4 py-2">
         <i class="fas fa-user mr-2"></i>About Me
       </a>
-      <a href="#contact-info-buttons" class="bg-blue-600 hover:bg-blue-500 text-white px-4 py-2 rounded-lg transition-all duration-300 transform hover:scale-105">
+      <a href="#contact-info-buttons" class="btn-mc text-white px-4 py-2">
         <i class="fas fa-envelope mr-2"></i>Contact Me
       </a>
     </div>
   </header>
 
   <main class="container mx-auto px-4 py-8">
-    <!-- Snake Game Section -->
-    <section class="mb-12 bg-gray-800 p-6 rounded-lg shadow-lg">
-      <h2 class="text-2xl font-bold text-green-400 mb-4">Play Snake (Minecraft Edition)</h2>
-      <div class="flex flex-col md:flex-row gap-8">
-        <div class="flex-1">
-          <canvas id="snake-canvas" class="bg-black border-4 border-green-600 rounded-lg mx-auto block"></canvas>
-          <div class="mt-4 text-center">
-            <p class="text-yellow-400">Controls: Arrow Keys to Move</p>
+    <!-- Hero Section -->
+    <section class="mb-12 text-center">
+      <div class="section-container p-8">
+        <div class="flex justify-center mb-6">
+          <div class="w-24 h-24 bg-blue-500 rounded-full flex items-center justify-center floating">
+            <i class="fas fa-cube text-white text-3xl"></i>
           </div>
         </div>
-        <div class="flex-1 bg-gray-700 p-4 rounded-lg">
-          <h3 class="text-xl font-bold text-green-400 mb-2">Game Features:</h3>
-          <ul class="list-disc pl-5 space-y-2">
-            <li>Minecraft-themed snake and food</li>
-            <li>Authentic pixel art</li>
-            <li>Score tracking</li>
-            <li>Increasing difficulty</li>
-            <li>Responsive controls</li>
-          </ul>
-          <div class="mt-6">
-            <h3 class="text-xl font-bold text-green-400 mb-2">Did You Know?</h3>
-            <p>This game was built with pure JavaScript, showcasing my coding skills!</p>
+        <h2 class="text-4xl font-bold text-primary mb-4 minecraft-font">Crafting Digital Adventures</h2>
+        <p class="subtitle max-w-2xl mx-auto">I transform Minecraft into extraordinary experiences through custom addons, behavior packs, and immersive worlds. Let's build something amazing together!</p>
+        <div class="mt-6 flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+          <a href="#projects" class="btn-mc px-6 py-3">
+            <i class="fas fa-gamepad mr-2"></i>View My Work
+          </a>
+          <a href="#contact-info-buttons" class="btn-mc px-6 py-3 bg-transparent border-2 border-blue-500">
+            <i class="fas fa-rocket mr-2"></i>Start a Project
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Snake Game Section -->
+    <section class="mb-12">
+      <div class="section-container p-6">
+        <h2 class="text-2xl font-bold text-primary mb-4 minecraft-font">Play Snake</h2>
+        <div class="flex flex-col md:flex-row gap-8">
+          <div class="flex-1">
+            <div class="game-canvas-container">
+              <canvas id="snake-canvas" width="400" height="400" class="bg-black rounded-lg mx-auto block"></canvas>
+            </div>
+            <div class="mt-4 text-center">
+              <p class="text-accent font-medium"><i class="fas fa-gamepad mr-2"></i>Controls: Arrow Keys to Move</p>
+              
+              <!-- Controles móviles -->
+              <div class="controls-grid md:hidden">
+                <button class="control-btn control-up" onclick="changeDirection('UP')">
+                  <i class="fas fa-arrow-up"></i>
+                </button>
+                <button class="control-btn control-left" onclick="changeDirection('LEFT')">
+                  <i class="fas fa-arrow-left"></i>
+                </button>
+                <button class="control-btn control-right" onclick="changeDirection('RIGHT')">
+                  <i class="fas fa-arrow-right"></i>
+                </button>
+                <button class="control-btn control-down" onclick="changeDirection('DOWN')">
+                  <i class="fas fa-arrow-down"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="flex-1 bg-blue-50 p-6 rounded-lg">
+            <h3 class="text-xl font-bold text-primary mb-3">Game Features:</h3>
+            <ul class="space-y-2">
+              <li class="flex items-start">
+                <i class="fas fa-cube text-primary mr-2 mt-1"></i>
+                <span class="feature-text">Pixel-perfect design with smooth animations</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-chart-line text-primary mr-2 mt-1"></i>
+                <span class="feature-text">Score tracking with increasing difficulty</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-mobile-alt text-primary mr-2 mt-1"></i>
+                <span class="feature-text">Responsive controls optimized for all devices</span>
+              </li>
+            </ul>
+            <div class="insight-box mt-6">
+              <h3 class="text-xl font-bold text-primary mb-2">Developer's Insight:</h3>
+              <p class="insight-text">This game showcases my JavaScript skills, similar to the scripting I use for Minecraft Bedrock creations. Every line of code was carefully crafted to deliver a smooth, engaging experience.</p>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="projects" class="portfolio-grid mb-12 bg-gray-800 p-6 rounded-lg shadow-lg">
-      <h2 class="text-2xl font-bold text-green-400 mb-6 text-center">My Projects</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <div class="project bg-gray-700 p-4 rounded-lg hover:bg-gray-600 transition-all duration-300 transform hover:scale-105">
-          <a href="https://www.minecraft.net/en-us/marketplace/pdp?id=eb46793e-d7db-4615-8dd4-cdce1ef27951">
-            <img src="project_1.jpg" alt="Ore Detector ++" class="w-full h-48 object-cover rounded-lg mb-2">
-            <div class="project-name text-green-400 font-bold text-lg">Ore Detector ++</div>
-          </a>
-        </div>
-        <div class="project bg-gray-700 p-4 rounded-lg hover:bg-gray-600 transition-all duration-300 transform hover:scale-105">
-          <a href="https://www.minecraft.net/en-us/marketplace/pdp?id=bbc39b87-5547-4174-8dee-d226c51c28c3">
-            <img src="security.jpg" alt="Security Bunker" class="w-full h-48 object-cover rounded-lg mb-2">
-            <div class="project-name text-green-400 font-bold text-lg">Security Bunker</div>
-          </a>
-        </div>
-        <div class="project bg-gray-700 p-4 rounded-lg hover:bg-gray-600 transition-all duration-300 transform hover:scale-105">
-          <a href="https://www.behance.net/gallery/136173379/Loren-Studios-Minecraft-Marketplace-Projects">
-            <img src="pets.png" alt="Cute Pets (Coming Soon)" class="w-full h-48 object-cover rounded-lg mb-2">
-            <div class="project-name text-green-400 font-bold text-lg">Cute Pets (Coming Soon)</div>
-          </a>
-        </div>
-        <div class="project bg-gray-700 p-4 rounded-lg hover:bg-gray-600 transition-all duration-300 transform hover:scale-105">
-          <a href="https://www.bedrockexplorer.com/b8f95f61-8abf-45e1-bdc1-d1cb5fe7f639">
-            <img src="mob_into.jpg" alt="100 DAYS MORPH" class="w-full h-48 object-cover rounded-lg mb-2">
-            <div class="project-name text-green-400 font-bold text-lg">100 DAYS MORPH</div>
-          </a>
-        </div>
-        <div class="project bg-gray-700 p-4 rounded-lg hover:bg-gray-600 transition-all duration-300 transform hover:scale-105">
-          <a href="https://www.minecraft.net/en-us/marketplace/pdp?id=8ae8a2f0-9a05-45fa-a82a-bdc077f35eb6">
-            <img src="breeze_weapons.jpg" alt="Breeze Weapons" class="w-full h-48 object-cover rounded-lg mb-2">
-            <div class="project-name text-green-400 font-bold text-lg">Breeze Weapons</div>
-          </a>
-        </div>
-        <div class="project hidden bg-gray-700 p-4 rounded-lg hover:bg-gray-600 transition-all duration-300 transform hover:scale-105">
-          <a href="https://www.minecraft.net/en-us/marketplace/pdp?id=b4001253-8771-49fa-bc8f-c559ae865e18">
-            <img src="wolf.jpg" alt="Wolf Expansion" class="w-full h-48 object-cover rounded-lg mb-2">
-            <div class="project-name text-green-400 font-bold text-lg">Wolf Expansion</div>
-          </a>
-        </div>
-        <div class="project hidden bg-gray-700 p-4 rounded-lg hover:bg-gray-600 transition-all duration-300 transform hover:scale-105">
-          <a href="https://www.minecraft.net/es-es/marketplace/pdp?id=c2c6b98e-c724-48c5-b33d-3c8543e10ff7">
-            <img src="evolve.jpg" alt="Wither Evolve" class="w-full h-48 object-cover rounded-lg mb-2">
-            <div class="project-name text-green-400 font-bold text-lg">Wither Evolve</div>
-          </a>
-        </div>
-        <div class="project hidden bg-gray-700 p-4 rounded-lg hover:bg-gray-600 transition-all duration-300 transform hover:scale-105">
-          <a href="https://www.minecraft.net/en-us/marketplace/pdp?id=445077ce-d130-4eed-93f7-351dcce8a084">
-            <img src="tnt.jpg" alt="TnT Town" class="w-full h-48 object-cover rounded-lg mb-2">
-            <div class="project-name text-green-400 font-bold text-lg">TnT Town</div>
-          </a>
-        </div>
-        <div class="project hidden bg-gray-700 p-4 rounded-lg hover:bg-gray-600 transition-all duration-300 transform hover:scale-105">
-          <a href="https://www.minecraft.net/en-us/marketplace/pdp?id=c305a7ff-6f6e-4eb8-8fb1-8028395cb512">
-            <img src="camels.jpg" alt="More Camels" class="w-full h-48 object-cover rounded-lg mb-2">
-            <div class="project-name text-green-400 font-bold text-lg">More Camels</div>
-          </a>
-        </div>
-        <div class="project hidden bg-gray-700 p-4 rounded-lg hover:bg-gray-600 transition-all duration-300 transform hover:scale-105">
-          <a href="https://www.minecraft.net/en-us/marketplace/pdp?id=50e61c35-265a-4c69-ad45-ae40df842186">
-            <img src="cursed.jpg" alt="Cursed World" class="w-full h-48 object-cover rounded-lg mb-2">
-            <div class="project-name text-green-400 font-bold text-lg">Cursed World</div>
-          </a>
-        </div>
-        <div class="project hidden bg-gray-700 p-4 rounded-lg hover:bg-gray-600 transition-all duration-300 transform hover:scale-105">
-          <a href="https://www.minecraft.net/en-us/marketplace/pdp?id=04543470-c7b6-42b8-90a1-e2c868fd063d">
-            <img src="parkour.jpg" alt="Parkour & Portals" class="w-full h-48 object-cover rounded-lg mb-2">
-            <div class="project-name text-green-400 font-bold text-lg">Parkour & Portals</div>
-          </a>
-        </div>
-        <div class="project hidden bg-gray-700 p-4 rounded-lg hover:bg-gray-600 transition-all duration-300 transform hover:scale-105">
-          <a href="https://www.minecraft.net/en-us/marketplace/pdp?id=4fea4e40-10ef-4001-8fe2-53ed8d976201">
-            <img src="extinc_animals.jpg" alt="Extinc Animals Add-On" class="w-full h-48 object-cover rounded-lg mb-2">
-            <div class="project-name text-green-400 font-bold text-lg">Extinc Animals Add-On</div>
-          </a>
-        </div>
-        <div class="project hidden bg-gray-700 p-4 rounded-lg hover:bg-gray-600 transition-all duration-300 transform hover:scale-105">
-          <a href="https://www.bedrockexplorer.com/@bunny-studios/cat-expansion-add-on">
-            <img src="catexpansion.jpg" alt="Extinc Animals Add-On" class="w-full h-48 object-cover rounded-lg mb-2">
-            <div class="project-name text-green-400 font-bold text-lg">Cat Expansion Add-On</div>
-          </a>
-        </div>
-        <div class="project hidden bg-gray-700 p-4 rounded-lg hover:bg-gray-600 transition-all duration-300 transform hover:scale-105">
-          <a href="https://www.bedrockexplorer.com/@cypress-games/fishing-20">
-            <img src="fish.jpg" alt="Extinc Animals Add-On" class="w-full h-48 object-cover rounded-lg mb-2">
-            <div class="project-name text-green-400 font-bold text-lg">Fishing Add-On</div>
-          </a>
-        </div>
-        <div class="project hidden bg-gray-700 p-4 rounded-lg hover:bg-gray-600 transition-all duration-300 transform hover:scale-105">
-          <h3 class="text-green-400">I hope we fill this with more projects!</h3>
-        </div>
+    <!-- Projects Section -->
+<section id="projects" class="mb-12">
+  <div class="section-container p-6">
+    <h2 class="text-2xl font-bold text-primary mb-6 text-center minecraft-font">My Minecraft Marketplace Projects</h2>
+    <p class="subtitle text-center max-w-2xl mx-auto mb-8">From custom mobs and weapons to complete adventure maps, each project represents my dedication to quality and player experience.</p>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Project 1 - Ore Detector ++ -->
+      <div class="project-card p-4">
+        <a href="https://www.minecraft.net/en-us/marketplace/pdp?id=eb46793e-d7db-4615-8dd4-cdce1ef27951" class="block">
+          <div class="relative overflow-hidden rounded-lg mb-3">
+            <img src="project_1.jpg" alt="Ore Detector ++" class="w-full h-48 object-cover transition-transform duration-500 hover:scale-105">
+            <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-70"></div>
+            
+          </div>
+          <div class="project-name text-primary font-bold text-lg">Ore Detector ++</div>
+          <p class="text-medium text-sm mt-1">Never struggle to find resources again with this enhanced ore detection system.</p>
+        </a>
       </div>
       
-      <button id="showMoreBtn" class="mt-6 bg-yellow-600 hover:bg-yellow-500 text-white px-6 py-3 rounded-lg transition-all duration-300 transform hover:scale-105 mx-auto block">
-        Show More Projects
-      </button>
-    </section>
-
-    <section id="contact-info-buttons" class="contact-info-buttons mb-12 bg-gray-800 p-6 rounded-lg shadow-lg">
-      <h2 class="text-2xl font-bold text-green-400 mb-6 text-center">Contact Me</h2>
-      <div class="flex justify-center space-x-4">
-        <a href="javascript:void(0);" onclick="copyDiscordID()" class="bg-purple-600 hover:bg-purple-500 text-white px-6 py-3 rounded-lg transition-all duration-300 transform hover:scale-105">
-          <i class="fab fa-discord mr-2"></i>Discord
+      <!-- Project 2 - Security Bunker -->
+      <div class="project-card p-4">
+        <a href="https://www.minecraft.net/en-us/marketplace/pdp?id=bbc39b87-5547-4174-8dee-d226c51c28c3" class="block">
+          <div class="relative overflow-hidden rounded-lg mb-3">
+            <img src="security.jpg" alt="Security Bunker" class="w-full h-48 object-cover transition-transform duration-500 hover:scale-105">
+            <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-70"></div>
+          </div>
+          <div class="project-name text-primary font-bold text-lg">Security Bunker</div>
+          <p class="text-medium text-sm mt-1">Fortify your base with advanced security systems and defensive structures.</p>
         </a>
-        <a href="https://x.com/thepilotdev" target="_blank" class="bg-blue-400 hover:bg-blue-300 text-white px-6 py-3 rounded-lg transition-all duration-300 transform hover:scale-105">
-          <i class="fab fa-twitter mr-2"></i>Twitter
+      </div>
+      
+      <!-- Project 3 - Cute Pets -->
+      <div class="project-card p-4">
+        <a href="https://www.behance.net/gallery/136173379/Loren-Studios-Minecraft-Marketplace-Projects" class="block">
+          <div class="relative overflow-hidden rounded-lg mb-3">
+            <img src="pets.png" alt="Cute Pets (Coming Soon)" class="w-full h-48 object-cover transition-transform duration-500 hover:scale-105">
+            <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-70"></div>
+            <div class="absolute bottom-2 left-2">
+              <span class="bg-yellow-600 text-xs text-white px-2 py-1 rounded">COMING SOON</span>
+            </div>
+          </div>
+          <div class="project-name text-primary font-bold text-lg">Cute Pets</div>
+          <p class="text-medium text-sm mt-1">Adopt and care for adorable companions in your Minecraft world.</p>
         </a>
+      </div>
+      
+      <!-- Project 4 - 100 DAYS MORPH -->
+      <div class="project-card p-4">
+        <a href="https://www.bedrockexplorer.com/b8f95f61-8abf-45e1-bdc1-d1cb5fe7f639" class="block">
+          <div class="relative overflow-hidden rounded-lg mb-3">
+            <img src="mob_into.jpg" alt="100 DAYS MORPH" class="w-full h-48 object-cover transition-transform duration-500 hover:scale-105">
+            <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-70"></div>
+            <div class="absolute bottom-2 left-2">
+              <span class="bg-green-600 text-xs text-white px-2 py-1 rounded">POPULAR</span>
+            </div>
+          </div>
+          <div class="project-name text-primary font-bold text-lg">100 DAYS MORPH</div>
+          <p class="text-medium text-sm mt-1">Transform into different mobs with unique abilities in this survival challenge.</p>
+        </a>
+      </div>
+      
+      <!-- Project 5 - Breeze Weapons -->
+      <div class="project-card p-4">
+        <a href="https://www.minecraft.net/en-us/marketplace/pdp?id=8ae8a2f0-9a05-45fa-a82a-bdc077f35eb6" class="block">
+          <div class="relative overflow-hidden rounded-lg mb-3">
+            <img src="breeze_weapons.jpg" alt="Breeze Weapons" class="w-full h-48 object-cover transition-transform duration-500 hover:scale-105">
+            <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-70"></div>
+          </div>
+          <div class="project-name text-primary font-bold text-lg">Breeze Weapons</div>
+          <p class="text-medium text-sm mt-1">Powerful wind-based weapons that change combat dynamics.</p>
+        </a>
+      </div>
+      
+      <!-- Project 6 - Wolf Expansion -->
+      <div class="project-card p-4">
+        <a href="https://www.minecraft.net/en-us/marketplace/pdp?id=b4001253-8771-49fa-bc8f-c559ae865e18" class="block">
+          <div class="relative overflow-hidden rounded-lg mb-3">
+            <img src="wolf.jpg" alt="Wolf Expansion" class="w-full h-48 object-cover transition-transform duration-500 hover:scale-105">
+            <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-70"></div>
+            <div class="absolute bottom-2 left-2">
+              <span class="bg-blue-600 text-xs text-white px-2 py-1 rounded">BEST SELLER</span>
+            </div>
+          </div>
+          <div class="project-name text-primary font-bold text-lg">Wolf Expansion</div>
+          <p class="text-medium text-sm mt-1">Enhanced wolf companions with new breeds and abilities.</p>
+        </a>
+      </div>
+      
+      <!-- Project 7 - Wither Evolve -->
+      <div class="project-card p-4">
+        <a href="https://www.minecraft.net/es-es/marketplace/pdp?id=c2c6b98e-c724-48c5-b33d-3c8543e10ff7" class="block">
+          <div class="relative overflow-hidden rounded-lg mb-3">
+            <img src="evolve.jpg" alt="Wither Evolve" class="w-full h-48 object-cover transition-transform duration-500 hover:scale-105">
+            <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-70"></div>
+            <div class="absolute bottom-2 left-2">
+              <span class="bg-purple-600 text-xs text-white px-2 py-1 rounded">BOSS FIGHT</span>
+            </div>
+          </div>
+          <div class="project-name text-primary font-bold text-lg">Wither Evolve</div>
+          <p class="text-medium text-sm mt-1">Experience the Wither like never before with new evolution stages.</p>
+        </a>
+      </div>
+      
+      <!-- Project 8 - TnT Town -->
+      <div class="project-card p-4">
+        <a href="https://www.minecraft.net/en-us/marketplace/pdp?id=445077ce-d130-4eed-93f7-351dcce8a084" class="block">
+          <div class="relative overflow-hidden rounded-lg mb-3">
+            <img src="tnt.jpg" alt="TnT Town" class="w-full h-48 object-cover transition-transform duration-500 hover:scale-105">
+            <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-70"></div>
+          </div>
+          <div class="project-name text-primary font-bold text-lg">TnT Town</div>
+          <p class="text-medium text-sm mt-1">An explosive adventure in a town where everything can blow up!</p>
+        </a>
+      </div>
+      
+      <!-- Project 9 - More Camels -->
+      <div class="project-card p-4">
+        <a href="https://www.minecraft.net/en-us/marketplace/pdp?id=c305a7ff-6f6e-4eb8-8fb1-8028395cb512" class="block">
+          <div class="relative overflow-hidden rounded-lg mb-3">
+            <img src="camels.jpg" alt="More Camels" class="w-full h-48 object-cover transition-transform duration-500 hover:scale-105">
+            <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-70"></div>
+          </div>
+          <div class="project-name text-primary font-bold text-lg">More Camels</div>
+          <p class="text-medium text-sm mt-1">Expanded camel content with new breeds, saddles, and abilities.</p>
+        </a>
+      </div>
+      
+      <!-- Project 10 - Cursed World -->
+      <div class="project-card p-4">
+        <a href="https://www.minecraft.net/en-us/marketplace/pdp?id=50e61c35-265a-4c69-ad45-ae40df842186" class="block">
+          <div class="relative overflow-hidden rounded-lg mb-3">
+            <img src="cursed.jpg" alt="Cursed World" class="w-full h-48 object-cover transition-transform duration-500 hover:scale-105">
+            <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-70"></div>
+            <div class="absolute bottom-2 left-2">
+              <span class="bg-red-600 text-xs text-white px-2 py-1 rounded">HORROR</span>
+            </div>
+          </div>
+          <div class="project-name text-primary font-bold text-lg">Cursed World</div>
+          <p class="text-medium text-sm mt-1">A spooky adventure in a world filled with curses and mysteries.</p>
+        </a>
+      </div>
+      
+      <!-- Project 11 - Parkour & Portals -->
+      <div class="project-card p-4">
+        <a href="https://www.minecraft.net/en-us/marketplace/pdp?id=04543470-c7b6-42b8-90a1-e2c868fd063d" class="block">
+          <div class="relative overflow-hidden rounded-lg mb-3">
+            <img src="parkour.jpg" alt="Parkour & Portals" class="w-full h-48 object-cover transition-transform duration-500 hover:scale-105">
+            <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-70"></div>
+          </div>
+          <div class="project-name text-primary font-bold text-lg">Parkour & Portals</div>
+          <p class="text-medium text-sm mt-1">Challenge your parkour skills in this portal-based adventure map.</p>
+        </a>
+      </div>
+      
+      <!-- Project 12 - Extinct Animals Add-On -->
+      <div class="project-card p-4">
+        <a href="https://www.minecraft.net/en-us/marketplace/pdp?id=4fea4e40-10ef-4001-8fe2-53ed8d976201" class="block">
+          <div class="relative overflow-hidden rounded-lg mb-3">
+            <img src="extinc_animals.jpg" alt="Extinct Animals Add-On" class="w-full h-48 object-cover transition-transform duration-500 hover:scale-105">
+            <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-70"></div>
+            <div class="absolute bottom-2 left-2">
+              <span class="bg-orange-600 text-xs text-white px-2 py-1 rounded">EDUCATIONAL</span>
+            </div>
+          </div>
+          <div class="project-name text-primary font-bold text-lg">Extinct Animals Add-On</div>
+          <p class="text-medium text-sm mt-1">Bring prehistoric creatures back to life in your Minecraft world.</p>
+        </a>
+      </div>
+      
+      <!-- Project 13 - Cat Expansion Add-On -->
+      <div class="project-card p-4">
+        <a href="https://www.bedrockexplorer.com/@bunny-studios/cat-expansion-add-on" class="block">
+          <div class="relative overflow-hidden rounded-lg mb-3">
+            <img src="catexpansion.jpg" alt="Cat Expansion Add-On" class="w-full h-48 object-cover transition-transform duration-500 hover:scale-105">
+            <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-70"></div>
+          </div>
+          <div class="project-name text-primary font-bold text-lg">Cat Expansion Add-On</div>
+          <p class="text-medium text-sm mt-1">More feline friends with unique breeds and behaviors.</p>
+        </a>
+      </div>
+      
+      <!-- Project 14 - Fishing Add-On -->
+      <div class="project-card p-4">
+        <a href="https://www.bedrockexplorer.com/@cypress-games/fishing-20" class="block">
+          <div class="relative overflow-hidden rounded-lg mb-3">
+            <img src="fish.jpg" alt="Fishing Add-On" class="w-full h-48 object-cover transition-transform duration-500 hover:scale-105">
+            <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-70"></div>
+          </div>
+          <div class="project-name text-primary font-bold text-lg">Fishing Add-On</div>
+          <p class="text-medium text-sm mt-1">Enhanced fishing experience with new fish, rods, and mechanics.</p>
+        </a>
+      </div>
+      
+      <!-- Project 15 - Your Project Here -->
+      <div class="project-card p-4">
+        <div class="h-48 bg-gradient-to-br from-blue-100 to-blue-200 rounded-lg flex items-center justify-center mb-3 border-2 border-dashed border-blue-300">
+          <i class="fas fa-plus-circle text-primary text-5xl"></i>
+        </div>
+        <div class="project-name text-primary font-bold text-lg">Your Project Here</div>
+        <p class="text-medium text-sm mt-1">Let's work together to create your next Minecraft masterpiece!</p>
+        <div class="mt-3">
+          <a href="#contact-info-buttons" class="btn-mc text-white px-4 py-2 text-sm inline-block">
+            <i class="fas fa-rocket mr-1"></i>Start Project
+          </a>
+        </div>
+      </div>
+    </div>
+    
+    <button id="showMoreBtn" class="btn-mc mt-8 text-white px-6 py-3 mx-auto block">
+      <i class="fas fa-chevron-down mr-2"></i>Show More Projects
+    </button>
+  </div>
+</section>
+    <!-- Contact Section -->
+    <section id="contact-info-buttons" class="mb-12">
+      <div class="section-container p-8 text-center">
+        <h2 class="text-2xl font-bold text-primary mb-2 minecraft-font">Let's Create Together</h2>
+        <p class="text-medium mb-6 max-w-xl mx-auto">Have a project in mind? Let's discuss how we can bring your Minecraft vision to life!</p>
+        <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6">
+          <a href="javascript:void(0);" onclick="copyDiscordID()" class="btn-mc px-6 py-3 bg-purple-600 border-purple-500">
+            <i class="fab fa-discord mr-2"></i>Discord: thepilotdev
+          </a>
+          <a href="https://x.com/thepilotdev" target="_blank" class="btn-mc px-6 py-3 bg-blue-500 border-blue-400">
+            <i class="fab fa-twitter mr-2"></i>Twitter
+          </a>
+          <a href="mailto:contact@thepilotdev.com" class="btn-mc px-6 py-3 bg-red-500 border-red-400">
+            <i class="fas fa-envelope mr-2"></i>Email
+          </a>
+        </div>
       </div>
     </section>
   </main>
 
-  <footer class="bg-black py-6 px-4 border-t-4 border-green-600">
+  <footer class="footer-gradient py-8 px-4">
     <div class="container mx-auto text-center">
-      <p class="text-gray-400 mb-2">&copy; 2024 ThePilotDev</p>
-      <p class="text-green-400 font-bold text-lg">"Building amazing Minecraft experiences!"</p>
+      <p class="text-blue-200 mb-2">&copy; 2024 ThePilotDev. All rights reserved.</p>
+      <p class="text-white font-bold text-lg minecraft-font">"Building amazing Minecraft experiences!"</p>
     </div>
   </footer>
 
-  <script src="scripts.js"></script>
-  <div id="notification" class="notification hidden fixed bottom-4 right-4 bg-green-600 text-white px-4 py-2 rounded-lg">Discord ID copied to clipboard!</div>
+  <script>
+    // Snake Game JavaScript - CORREGIDO Y FUNCIONAL
+    let d; // Variable global para la dirección
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const canvas = document.getElementById('snake-canvas');
+      const ctx = canvas.getContext('2d');
+      
+      // Game variables
+      const box = 20;
+      let snake = [];
+      snake[0] = {x: 9 * box, y: 10 * box};
+      let food = {
+        x: Math.floor(Math.random() * 19 + 1) * box,
+        y: Math.floor(Math.random() * 19 + 1) * box
+      };
+      let score = 0;
+      let game;
+      
+      // Control the snake - PREVENIR SCROLL DE PÁGINA
+      document.addEventListener('keydown', (event) => {
+        // Prevenir el comportamiento por defecto de las flechas
+        if([37, 38, 39, 40].includes(event.keyCode)) {
+          event.preventDefault();
+        }
+        
+        if(event.keyCode == 37 && d != "RIGHT") d = "LEFT";
+        else if(event.keyCode == 38 && d != "DOWN") d = "UP";
+        else if(event.keyCode == 39 && d != "LEFT") d = "RIGHT";
+        else if(event.keyCode == 40 && d != "UP") d = "DOWN";
+      });
+      
+      function drawGame() {
+        // Clear canvas
+        ctx.fillStyle = "#111";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        
+        // Draw snake
+        for(let i = 0; i < snake.length; i++) {
+          ctx.fillStyle = i == 0 ? "#4A90E2" : "#87CEEB";
+          ctx.fillRect(snake[i].x, snake[i].y, box, box);
+          ctx.strokeStyle = "#000";
+          ctx.strokeRect(snake[i].x, snake[i].y, box, box);
+        }
+        
+        // Draw food
+        ctx.fillStyle = "#F44336";
+        ctx.fillRect(food.x, food.y, box, box);
+        
+        // Old head position
+        let snakeX = snake[0].x;
+        let snakeY = snake[0].y;
+        
+        // Which direction
+        if(d == "LEFT") snakeX -= box;
+        if(d == "UP") snakeY -= box;
+        if(d == "RIGHT") snakeX += box;
+        if(d == "DOWN") snakeY += box;
+        
+        // If the snake eats the food
+        if(snakeX == food.x && snakeY == food.y) {
+          score++;
+          food = {
+            x: Math.floor(Math.random() * 19 + 1) * box,
+            y: Math.floor(Math.random() * 19 + 1) * box
+          };
+        } else {
+          // Remove the tail
+          snake.pop();
+        }
+        
+        // Add new Head
+        let newHead = {
+          x: snakeX,
+          y: snakeY
+        };
+        
+        // Game over conditions
+        if(snakeX < 0 || snakeY < 0 || snakeX >= canvas.width || snakeY >= canvas.height 
+           || collision(newHead, snake)) {
+          clearInterval(game);
+          alert("Game Over! Score: " + score);
+          // Restart game
+          setTimeout(() => {
+            snake = [{x: 9 * box, y: 10 * box}];
+            score = 0;
+            d = null;
+            food = {
+              x: Math.floor(Math.random() * 19 + 1) * box,
+              y: Math.floor(Math.random() * 19 + 1) * box
+            };
+            game = setInterval(drawGame, 100);
+          }, 100);
+        }
+        
+        snake.unshift(newHead);
+        
+        // Score
+        ctx.fillStyle = "white";
+        ctx.font = "20px 'Press Start 2P'";
+        ctx.fillText("Score: " + score, 10, 30);
+      }
+      
+      function collision(head, array) {
+        for(let i = 0; i < array.length; i++) {
+          if(head.x == array[i].x && head.y == array[i].y) {
+            return true;
+          }
+        }
+        return false;
+      }
+
+      // Función para controles móviles
+      window.changeDirection = function(direction) {
+        if(direction == "LEFT" && d != "RIGHT") d = "LEFT";
+        else if(direction == "UP" && d != "DOWN") d = "UP";
+        else if(direction == "RIGHT" && d != "LEFT") d = "RIGHT";
+        else if(direction == "DOWN" && d != "UP") d = "DOWN";
+      }
+      
+      // Start game
+      game = setInterval(drawGame, 100);
+    });
+
+    // Resto del código (showMoreBtn, copyDiscordID, etc.)
+    document.addEventListener("DOMContentLoaded", () => {
+      const showMoreBtn = document.getElementById("showMoreBtn");
+      const hiddenProjects = document.querySelectorAll(".project-card.hidden");
+  
+      if (showMoreBtn) {
+        showMoreBtn.addEventListener("click", () => {
+          hiddenProjects.forEach((project) => {
+            project.classList.remove("hidden");
+          });
+          showMoreBtn.style.display = "none";
+        });
+      }
+    });
+
+    function copyDiscordID() {
+      const discordID = "thepilotdev";
+      navigator.clipboard.writeText(discordID).then(() => {
+        showNotification("Discord ID copied to clipboard!");
+      }).catch(err => {
+        console.error('Failed to copy text: ', err);
+      });
+    }
+    
+    function showNotification(message) {
+      let notification = document.getElementById("notification");
+      if (!notification) {
+        notification = document.createElement("div");
+        notification.id = "notification";
+        notification.className = "notification hidden fixed bottom-4 right-4 text-white px-4 py-3 rounded-lg z-50";
+        document.body.appendChild(notification);
+      }
+      
+      notification.innerHTML = `<i class="fas fa-check-circle mr-2"></i>${message}`;
+      notification.classList.remove("hidden");
+      
+      setTimeout(() => {
+        notification.classList.add("hidden");
+      }, 3000);
+    }
+  </script>
 </body>
 </html>
