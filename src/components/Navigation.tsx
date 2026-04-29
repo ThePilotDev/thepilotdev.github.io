@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { Button } from "./ui/button";
 
 const Navigation = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -23,50 +22,44 @@ const Navigation = () => {
     <nav
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-background/80 backdrop-blur-xl shadow-sm border-b border-border"
+          ? "bg-zinc-950/80 backdrop-blur-xl border-b border-white/10"
           : "bg-transparent"
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex items-center justify-between h-20">
           <button
             onClick={() => scrollToSection("hero")}
-            className="text-xl font-semibold tracking-tight hover:opacity-70 transition-opacity"
+            className="text-xl font-bold tracking-tight hover:text-blue-400 transition-colors minecraft-font text-white"
           >
             ThePilotDev
           </button>
 
           <div className="hidden md:flex items-center gap-8">
             <button
-              onClick={() => scrollToSection("projects")}
-              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
-            >
-              Projects
-            </button>
-            <button
-              onClick={() => scrollToSection("pricing")}
-              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
-            >
-              Pricing
-            </button>
-            <button
               onClick={() => scrollToSection("about")}
-              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+              className="text-sm font-medium text-zinc-400 hover:text-white transition-colors"
             >
               About
             </button>
             <button
-              onClick={() => scrollToSection("skills")}
-              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+              onClick={() => scrollToSection("projects")}
+              className="text-sm font-medium text-zinc-400 hover:text-white transition-colors"
             >
-              Skills
+              Add-Ons
             </button>
-            <Button
+            <button
+              onClick={() => scrollToSection("games")}
+              className="text-sm font-medium text-zinc-400 hover:text-white transition-colors"
+            >
+              Games
+            </button>
+            <button
               onClick={() => scrollToSection("contact")}
-              className="bg-accent hover:bg-accent/90 text-accent-foreground rounded-full"
+              className="text-sm font-semibold px-6 py-2.5 rounded-full bg-blue-600 hover:bg-blue-500 text-white transition-colors shadow-[0_0_20px_rgba(37,99,235,0.3)] hover:shadow-[0_0_30px_rgba(37,99,235,0.5)]"
             >
               Contact
-            </Button>
+            </button>
           </div>
         </div>
       </div>

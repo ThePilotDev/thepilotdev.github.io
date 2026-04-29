@@ -1,59 +1,37 @@
-import SnakeGame from "./games/SnakeGame";
-import BreakoutGame from "./games/BreakoutGame";
-import { useAppleScrollZoom } from "@/hooks/useAppleScroll";
+import { motion } from "framer-motion";
+import SnakeGame from "./SnakeGame";
 
 const JavaScriptGames = () => {
-  const { scale: scale1, opacity: opacity1, elementRef: ref1 } = useAppleScrollZoom();
-  const { scale: scale2, opacity: opacity2, elementRef: ref2 } = useAppleScrollZoom();
-
   return (
-    <section className="py-32 md:py-40 px-6 lg:px-8 bg-gradient-to-b from-background via-secondary/20 to-background">
+    <section id="games" className="py-24 md:py-32 px-6 lg:px-8 relative overflow-hidden">
+      <div className="absolute inset-0 bg-zinc-950/80 -z-10" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_80%,rgba(59,130,246,0.1)_0%,transparent_50%)] -z-10" />
+      
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-20">
-          <h2 className="text-5xl md:text-7xl font-bold tracking-tight mb-6 text-balance">
-            JavaScript Games
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-4xl md:text-6xl font-bold tracking-tight mb-6 text-balance text-white minecraft-font">
+            Mini Games
           </h2>
-          <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto text-balance">
-            Interactive games built from scratch with vanilla JavaScript
+          <p className="text-lg md:text-xl text-zinc-400 max-w-2xl mx-auto text-balance">
+            Take a break and play a quick game of Snake! Built entirely with React Hooks and Framer Motion.
           </p>
-        </div>
+        </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-16">
-          <div
-            ref={ref1}
-            style={{
-              transform: `scale(${scale1})`,
-              opacity: opacity1,
-              transition: "transform 0.3s ease-out, opacity 0.3s ease-out",
-            }}
-          >
-            <div className="gradient-card rounded-3xl p-8 shadow-apple">
-              <h3 className="text-3xl font-bold mb-6 text-center">Minecraft Snake</h3>
-              <SnakeGame />
-            </div>
-          </div>
-
-          <div
-            ref={ref2}
-            style={{
-              transform: `scale(${scale2})`,
-              opacity: opacity2,
-              transition: "transform 0.3s ease-out, opacity 0.3s ease-out",
-            }}
-          >
-            <div className="gradient-card rounded-3xl p-8 shadow-apple">
-              <h3 className="text-3xl font-bold mb-6 text-center">Block Breaker</h3>
-              <BreakoutGame />
-            </div>
-          </div>
-        </div>
-
-        <div className="mt-16 text-center">
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            These fully functional games demonstrate advanced JavaScript skills including canvas manipulation,
-            game loop architecture, collision detection, and event handling - all built without frameworks.
-          </p>
-        </div>
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="flex justify-center"
+        >
+          <SnakeGame />
+        </motion.div>
       </div>
     </section>
   );

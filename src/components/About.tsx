@@ -1,73 +1,113 @@
-import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import { motion } from "framer-motion";
+import { Terminal, Lightbulb, Gamepad2, GraduationCap } from "lucide-react";
+
+const approaches = [
+  {
+    icon: <Lightbulb className="w-6 h-6 text-blue-400" />,
+    title: "Creative Design",
+    description: "Crafting unique, visually appealing worlds and interactive experiences that capture players' imaginations.",
+    progress: 95
+  },
+  {
+    icon: <Terminal className="w-6 h-6 text-blue-400" />,
+    title: "Technical Precision",
+    description: "Developing optimized code and efficient structures that ensure smooth, bug-free gameplay experiences.",
+    progress: 90
+  },
+  {
+    icon: <Gamepad2 className="w-6 h-6 text-blue-400" />,
+    title: "Player-First Mindset",
+    description: "Designing with player engagement and immersion as the top priority in every project decision.",
+    progress: 92
+  },
+  {
+    icon: <GraduationCap className="w-6 h-6 text-blue-400" />,
+    title: "Constant Evolution",
+    description: "Always learning new techniques and staying updated with the latest Minecraft development trends.",
+    progress: 88
+  }
+];
 
 const About = () => {
-  const { ref, isVisible } = useScrollAnimation();
-
   return (
-    <section id="about" className="py-32 md:py-40 px-6 lg:px-8 bg-secondary/30">
-      <div className="max-w-5xl mx-auto">
-        <div
-          ref={ref}
-          className={`text-center mb-12 transition-all duration-1000 ${
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-20"
-          }`}
+    <section id="about" className="py-24 md:py-32 px-6 lg:px-8 relative">
+      <div className="max-w-7xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-6xl font-bold tracking-tight mb-6 text-balance">
+          <h2 className="text-4xl md:text-6xl font-bold tracking-tight mb-6 text-white minecraft-font">
             About Me
           </h2>
-        </div>
+        </motion.div>
 
-        <div className="gradient-card rounded-3xl p-8 md:p-12 shadow-apple">
-          <div className="prose prose-lg max-w-none">
-            <p className="text-xl text-muted-foreground leading-relaxed mb-6">
-              I'm a passionate Minecraft Bedrock developer specializing in creating innovative add-ons, 
-              custom mobs, and immersive gameplay experiences for the Minecraft community. My journey 
-              in development started years ago, and since then, I've been dedicated to pushing the 
-              boundaries of what's possible in Minecraft Bedrock Edition.
-            </p>
-            <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-              With extensive experience in behavior packs, resource packs, and advanced scripting using 
-              JavaScript and TypeScript, I transform creative ideas into polished, functional content 
-              that enhances the Minecraft experience. From custom entity behaviors to complex game 
-              mechanics, I love tackling challenging projects that bring unique visions to life.
-            </p>
-            <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-              My development philosophy centers on attention to detail, performance optimization, and 
-              creating content that feels natural within the Minecraft ecosystem. I believe that great 
-              add-ons should be both technically impressive and intuitively designed for players to enjoy.
-            </p>
-            <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-              Throughout my career, I've collaborated with various content creators, studios, and fellow 
-              developers on projects ranging from small quality-of-life improvements to large-scale 
-              content packs. Each project is an opportunity to learn, innovate, and contribute to the 
-              vibrant Minecraft community.
-            </p>
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              When I'm not coding or designing, I stay active in the Minecraft development community, 
-              sharing knowledge, exploring new techniques, and keeping up with the latest Bedrock Edition 
-              features. I'm always excited to take on new challenges and collaborate on ambitious projects 
-              that push creative boundaries.
-            </p>
-          </div>
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="space-y-6 relative"
+          >
+            <div className="absolute -inset-4 bg-gradient-to-r from-blue-500/20 to-purple-500/20 blur-3xl -z-10" />
+            
+            <div className="glassmorphism p-8 rounded-3xl relative overflow-hidden group border border-white/5 shadow-2xl">
+              <div className="absolute inset-0 bg-blue-500/5 group-hover:bg-blue-500/10 transition-colors duration-500" />
+              <p className="text-lg leading-relaxed text-zinc-300 relative z-10">
+                Hey there! I'm <strong className="text-white">Jose G. Duarte N</strong>, but most people know me as <strong className="text-blue-400">Pilot</strong>. I'm a passionate Minecraft developer from Venezuela with over <strong className="text-white">5 years of experience</strong> creating amazing content for the Minecraft Bedrock Marketplace. My specialty is bringing ideas to life through custom addons, immersive maps, and dynamic worlds that players love.
+              </p>
+            </div>
+            
+            <div className="glassmorphism p-8 rounded-3xl relative overflow-hidden group border-l-4 border-l-blue-500 shadow-2xl">
+              <div className="absolute inset-0 bg-zinc-900/50 group-hover:bg-zinc-800/50 transition-colors duration-500" />
+              <p className="text-lg leading-relaxed text-zinc-300 relative z-10">
+                I've built a strong foundation in both the creative and technical sides of Minecraft development. While I'm fluent in <strong className="text-white">JavaScript and TypeScript</strong> for the Bedrock scripting API, I also have deep experience with Minecraft commands, functions, and the technical artistry that makes projects truly stand out. Version control with Git is second nature to me.
+              </p>
+            </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-12 pt-12 border-t border-border">
-            <div className="text-center">
-              <div className="text-4xl font-bold text-accent mb-2">50+</div>
-              <div className="text-sm text-muted-foreground">Projects</div>
+            <div className="glassmorphism p-8 rounded-3xl relative overflow-hidden group border border-white/5 shadow-2xl">
+              <div className="absolute inset-0 bg-blue-500/5 group-hover:bg-blue-500/10 transition-colors duration-500" />
+              <p className="text-lg leading-relaxed text-zinc-300 relative z-10">
+                Beyond just coding, I have a background in technical art and love optimizing assets for the best performance. I've even created custom tools to speed up development workflows. Whether you need a small addon or a complete marketplace world, I bring dedication and flexibility to every project. I'm always excited to take on new challenges and work with creative teams to build something extraordinary!
+              </p>
             </div>
-            <div className="text-center">
-              <div className="text-4xl font-bold text-accent mb-2">100K+</div>
-              <div className="text-sm text-muted-foreground">Downloads</div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+          >
+            <h3 className="text-3xl font-bold mb-8 text-white flex items-center gap-3">
+              <span className="w-10 h-1 bg-blue-500 rounded-full" />
+              My Development Approach
+            </h3>
+            <div className="grid sm:grid-cols-2 gap-6">
+              {approaches.map((item, index) => (
+                <div key={index} className="glassmorphism p-6 rounded-3xl border border-white/10 hover:border-blue-500/50 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_10px_30px_rgba(37,99,235,0.15)] group">
+                  <div className="w-14 h-14 bg-blue-500/10 rounded-2xl flex items-center justify-center mb-5 group-hover:bg-blue-500/20 group-hover:scale-110 transition-all duration-300">
+                    {item.icon}
+                  </div>
+                  <h4 className="text-xl font-bold text-white mb-3">{item.title}</h4>
+                  <p className="text-sm text-zinc-400 mb-6 leading-relaxed">{item.description}</p>
+                  
+                  <div className="h-1.5 w-full bg-zinc-800/50 rounded-full overflow-hidden backdrop-blur-sm">
+                    <motion.div 
+                      initial={{ width: 0 }}
+                      whileInView={{ width: `${item.progress}%` }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 1, delay: 0.5 + (index * 0.1) }}
+                      className="h-full bg-blue-500 rounded-full"
+                    />
+                  </div>
+                </div>
+              ))}
             </div>
-            <div className="text-center">
-              <div className="text-4xl font-bold text-accent mb-2">5+</div>
-              <div className="text-sm text-muted-foreground">Years Exp.</div>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl font-bold text-accent mb-2">20+</div>
-              <div className="text-sm text-muted-foreground">Collaborations</div>
-            </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>
