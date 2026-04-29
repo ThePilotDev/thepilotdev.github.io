@@ -57,7 +57,6 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
         />
         <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/20 to-transparent opacity-90 group-hover:opacity-60 transition-opacity duration-500 z-20" />
       </div>
-      ////my name is luis
       <div className="relative z-30 p-6 pt-2">
         <div className="flex flex-wrap gap-2 mb-4">
           {project.tags.map((tag) => (
