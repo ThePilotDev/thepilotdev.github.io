@@ -6,7 +6,6 @@ const studios = [
   "KA Studios", "Vatonage", "Flowscape", "Eternal Creations", "Panascais"
 ];
 
-// Double the array for seamless marquee
 const marqueeStudios = [...studios, ...studios];
 
 const Studios = () => {

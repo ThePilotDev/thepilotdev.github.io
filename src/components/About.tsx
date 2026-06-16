@@ -28,14 +28,12 @@ const About = () => {
   return (
     <section id="about" className="py-32 px-[5vw] relative overflow-hidden">
       
-      {/* Background accents */}
       <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-blue-500/5 rounded-full blur-[120px] -z-10" />
       <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-purple-500/5 rounded-full blur-[120px] -z-10" />
       
       <div className="max-w-[1400px] mx-auto">
         <div className="grid lg:grid-cols-2 gap-20 items-start">
           
-          {/* Left Column - Typography Focus */}
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -59,7 +57,6 @@ const About = () => {
             </div>
           </motion.div>
 
-          {/* Right Column - Approaches Grid */}
           <div className="grid sm:grid-cols-2 gap-6 lg:mt-24">
             {approaches.map((item, i) => (
               <motion.div
@@ -70,7 +67,6 @@ const About = () => {
                 transition={{ duration: 0.6, delay: 0.1 * i, ease: [0.16, 1, 0.3, 1] }}
                 className="p-8 rounded-[24px] bg-[#0A0A0C] border border-white/5 hover:border-blue-500/30 transition-colors group relative overflow-hidden"
               >
-                {/* Hover gradient effect */}
                 <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 
                 <div className="relative z-10">

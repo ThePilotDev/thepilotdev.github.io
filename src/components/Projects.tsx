@@ -140,7 +140,6 @@ const Projects = () => {
       <div className="sticky top-0 h-screen overflow-hidden flex items-center">
         <motion.div style={{ x }} className="flex gap-[100px] px-[10vw] items-center">
           
-          {/* Intro text */}
           <div className="w-[40vw] shrink-0 pr-[10vw]">
             <h2 className="text-[clamp(2rem,5vw,5rem)] font-black leading-[1.1] tracking-tighter" style={{ fontFamily: "'Syne', sans-serif" }}>
               Pushing the<br/>boundaries<br/>of Bedrock.
@@ -150,14 +149,12 @@ const Projects = () => {
             </p>
           </div>
 
-          {/* Project Cards */}
           {allProjects.map((proj, i) => (
             <div key={i} className="relative w-[70vw] max-w-[900px] h-[70vh] rounded-[20px] overflow-hidden shrink-0 flex items-end p-[60px] group">
               <div className="absolute top-[-40px] right-0 text-[8rem] font-black text-white/5 pointer-events-none" style={{ fontFamily: "'Syne', sans-serif" }}>
                 {(i + 1).toString().padStart(2, '0')}
               </div>
               
-              {/* Image Background */}
               <img 
                 src={proj.img} 
                 alt={proj.title} 
@@ -168,10 +165,8 @@ const Projects = () => {
                 }}
               />
               
-              {/* Gradient Overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-[#030304]/90 to-transparent pointer-events-none" />
               
-              {/* Content */}
               <div className="relative z-10 w-full">
                 <div className="inline-block px-4 py-2 border border-white/20 rounded-full text-xs tracking-widest uppercase mb-6 backdrop-blur-md">
                   {proj.badge}
@@ -194,7 +189,6 @@ const Projects = () => {
             </div>
           ))}
           
-          {/* Outro text */}
           <div className="w-[30vw] shrink-0 pl-[5vw]">
             <h2 className="text-[clamp(2rem,4vw,4rem)] font-black leading-tight tracking-tighter" style={{ fontFamily: "'Syne', sans-serif" }}>
               More on<br/>the horizon.

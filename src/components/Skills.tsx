@@ -3,7 +3,7 @@ import { Terminal, FileCode2, Blocks, Paintbrush, Box, Sword, Skull, Map } from 
 
 const skills = [
   { icon: <Terminal className="w-8 h-8" />, name: "Commands", level: "Expert Level" },
-  { icon: <FileCode2 className="w-8 h-8" />, name: "JavaScript Scripting", level: "Advanced Level" },
+  { icon: <FileCode2 className="w-8 h-8" />, name: "TypeScript / JS Scripting", level: "Advanced Level" },
   { icon: <Blocks className="w-8 h-8" />, name: "Behavior Packs", level: "Expert Level" },
   { icon: <Paintbrush className="w-8 h-8" />, name: "Resource Packs", level: "Advanced Level" },
   { icon: <Box className="w-8 h-8" />, name: "3D Items", level: "Intermediate Level" },

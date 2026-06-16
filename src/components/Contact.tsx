@@ -47,10 +47,17 @@ const Contact = () => {
           </div>
         </motion.div>
 
-        <div className="pt-12 border-t border-zinc-800">
+        <div className="pt-12 border-t border-zinc-800 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-sm text-zinc-600">
-            © 2024 ThePilotDev. All rights reserved.
+            © 2026 ThePilotDev. All rights reserved.
           </p>
+          <div className="flex items-center gap-2 text-sm text-zinc-500 font-semibold tracking-wide uppercase">
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
+            </span>
+            <span>Desarrollado en TypeScript</span>
+          </div>
         </div>
       </div>
     </section>
